@@ -1,0 +1,16 @@
+{
+  "name": "e-ponto-bulma-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sass/e-ponto-bulma-theme.scss",
+  "scripts": {
+    "build": "node-sass --omit-source-map-url sass/e-ponto-bulma-theme.scss css/e-ponto-bulma-theme.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.8.0",
+    "node-sass": "^4.12.0"
+  }
+}
