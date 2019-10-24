@@ -11,37 +11,31 @@
         </h4>
 
         <form action="">
-            <div class="field">
-                <label class="label" for="username-input">
-                    Nome de Usuário
-                </label>
+            @component('components.form-field')
+                @slot('inputName', 'username')
+                @slot('labelText', 'Nome de Usuário')
+                @slot('inputType', 'number')
+            @endcomponent
 
-                <input class="input" id="username-input" name="username" type="number">
-            </div>
+            @component('components.form-field')
+                @slot('inputName', 'password')
+                @slot('labelText', 'Senha')
+                @slot('inputType', 'password')
 
-            <div class="field">
-                <label class="label" for="password-input">
-                    Senha
-                </label>
-
-                <input class="input" id="password-input" name="password" type="password">
-
-                <div class="help">
+                @slot('helpContent')
                     <div class="has-text-right">
                         <a href="">
                             Esqueceu sua senha?
                         </a>
                     </div>
-                </div>
-            </div>
+                @endslot
+            @endcomponent
 
-            <div class="field">
-                <div class="control">
-                    <button class="button is-fullwidth is-primary">
-                        Entrar
-                    </button>
-                </div>
-            </div>
+            @component('components.form-field')
+                @slot('inputType', 'button')
+                @slot('buttonElementClasses', 'is-fullwidth is-primary')
+                @slot('buttonText', 'Entrar')
+            @endcomponent
         </form>
     </main>
 
