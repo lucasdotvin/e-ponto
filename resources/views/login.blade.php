@@ -12,6 +12,8 @@
 
         <form action="" method="POST">
             @method('POST')
+            @csrf
+
             @component('components.form-field')
                 @slot('inputName', 'username')
                 @slot('labelText', 'Nome de Usuário')
