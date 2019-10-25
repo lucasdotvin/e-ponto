@@ -36,7 +36,7 @@
 
             @component('components.form-button')
                 @slot('buttonElementClasses', 'is-fullwidth is-primary')
-                @slot('buttonText', 'Entrar')
+                @slot('buttonContent', 'Entrar')
             @endcomponent
         </form>
     </main>

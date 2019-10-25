@@ -1,5 +1,5 @@
 <div class="control">
     <button class="button {{ $buttonElementClasses ?? null }}">
-        {{ $buttonText }}
+        {{ $buttonContent }}
     </button>
 </div>
