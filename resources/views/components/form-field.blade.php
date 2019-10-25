@@ -28,11 +28,18 @@
                     id="{{ $inputId }}"
                     name="{{ $inputName }}"
                     type="{{ $inputType }}"
+                    value='{{ old("$inputName") }}'
                 >
             </div>
 
             <div class="help">
                 {{ $helpContent ?? null }}
+
+                @error("$inputName")
+                    <div class="has-text-danger has-text-left">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
     @endswitch
 </div>
