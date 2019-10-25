@@ -34,8 +34,7 @@
                 @endslot
             @endcomponent
 
-            @component('components.form-field')
-                @slot('inputType', 'button')
+            @component('components.form-button')
                 @slot('buttonElementClasses', 'is-fullwidth is-primary')
                 @slot('buttonText', 'Entrar')
             @endcomponent
