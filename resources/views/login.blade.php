@@ -10,7 +10,8 @@
             Log In
         </h4>
 
-        <form action="">
+        <form action="" method="POST">
+            @method('POST')
             @component('components.form-field')
                 @slot('inputName', 'username')
                 @slot('labelText', 'Nome de Usuário')
