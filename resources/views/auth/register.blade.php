@@ -7,7 +7,7 @@
 @section('centered-content')
     <main class="box is-marginless">
         <h4 class="title has-text-centered is-4 ep-bordered-form-title">
-            Log In
+            Sign Up
         </h4>
 
         <form action="" method="POST">
@@ -15,8 +15,20 @@
             @csrf
 
             @component('components.form-field')
+                @slot('inputName', 'email')
+                @slot('labelText', 'Endereço de E-mail')
+                @slot('inputType', 'email')
+            @endcomponent
+
+            @component('components.form-field')
+                @slot('inputName', 'cpf')
+                @slot('labelText', 'CPF')
+                @slot('inputType', 'text')
+            @endcomponent
+
+            @component('components.form-field')
                 @slot('inputName', 'username')
-                @slot('labelText', 'Nome de Usuário')
+                @slot('labelText', 'Número de Matrícula')
                 @slot('inputType', 'number')
             @endcomponent
 
@@ -24,27 +36,25 @@
                 @slot('inputName', 'password')
                 @slot('labelText', 'Senha')
                 @slot('inputType', 'password')
+            @endcomponent
 
-                @slot('helpContent')
-                    <div class="has-text-right">
-                        <a href="">
-                            Esqueceu sua senha?
-                        </a>
-                    </div>
-                @endslot
+            @component('components.form-field')
+                @slot('inputName', 'password-confirmation')
+                @slot('labelText', 'Confirmação de Senha')
+                @slot('inputType', 'password-confirmation')
             @endcomponent
 
             @component('components.form-button')
                 @slot('buttonElementClasses', 'is-fullwidth is-primary')
-                @slot('buttonContent', 'Entrar')
+                @slot('buttonContent', 'Cadastrar')
             @endcomponent
         </form>
     </main>
 
     <footer class="box has-background-white-bis">
         <div class="has-text-centered">
-            <a href="register">
-                Não possui uma conta?
+            <a href="login">
+                Já possui uma conta?
             </a>
         </div>
     </footer>
