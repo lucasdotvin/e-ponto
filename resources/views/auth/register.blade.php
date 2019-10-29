@@ -1,7 +1,7 @@
 @extends('layouts.form-page')
 
 @push('css')
-<link rel="stylesheet" href="assets/css/form-page/index.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/e-ponto-bulma-theme/css/form-page/index.css') }}">
 @endpush
 
 @section('centered-content')

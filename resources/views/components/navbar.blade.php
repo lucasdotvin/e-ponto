@@ -32,3 +32,7 @@
         </div>
     </div>
 </nav>
+
+@push('scripts')
+    <script src="{{ asset('assets/js/form-submition-triggers.js') }}"></script>
+@endpush
