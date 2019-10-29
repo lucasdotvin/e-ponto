@@ -80,8 +80,11 @@ class RegisterController extends Controller
         $resultData = $apiData['result'];
 
         if (empty($resultData['records'])) {
-            ValidationException::withMessages([
-                'username' => 'Not recognized'
+            $errorMessage = trans('validation.exists');
+            $errorMessage = str_replace(':attribute', 'username', $errorMessage);
+
+            throw ValidationException::withMessages([
+                'username' => $errorMessage
             ]);
         }
 
