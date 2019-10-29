@@ -1,5 +1,9 @@
 @extends('layouts.base')
 
+@push('html-element-classes')
+    has-background-light
+@endpush
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/e-ponto-bulma-theme/css/e-ponto-bulma-theme.css') }}">
 @endpush
