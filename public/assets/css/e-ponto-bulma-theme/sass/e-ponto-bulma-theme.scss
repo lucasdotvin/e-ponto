@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+@import "./theme-colors.scss";
+
+$primary: $ep-primary;
+
 $radius: 0;
 $radius-large: 0;
 
