@@ -11,7 +11,7 @@
 @section('content')
     @component('components.navbar')
         @slot('color', 'primary')
-        @slot('fixed', 'top')
+        @slot('fixedPosition', 'top')
     @endcomponent
 
     <div class="container">
