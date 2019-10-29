@@ -100,6 +100,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cpf' => ['required', 'integer', 'digits:11', 'unique:users'],
             'username' => ['required', 'integer', 'digits_between:0,255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
