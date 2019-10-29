@@ -30,6 +30,19 @@
                 Dashboard
             </h1>
         </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <form action="{{ route('logout') }}" id="logout-form" method="POST">
+                    @method('POST')
+                    @csrf
+                </form>
+
+                <a class="navbar-item" data-form-submition-trigger-event="click" data-role="form-submition-trigger" data-target-form="logout-form">
+                    Sair
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
 
