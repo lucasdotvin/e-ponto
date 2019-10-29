@@ -16,6 +16,5 @@
 
     <div class="container">
         @yield('main-content')
-        a
     </div>
 @endsection
