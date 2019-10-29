@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@import "../theme-colors.scss";
+
+.ep-bordered-form-title {
+    border-left: 0.25rem solid $ep-primary;
+    margin-left: -1.25rem;
+    padding-left: 1rem;
+}
