@@ -4,7 +4,7 @@
   "description": "",
   "main": "sass/e-ponto-bulma-theme.scss",
   "scripts": {
-    "build": "node-sass --omit-source-map-url sass/e-ponto-bulma-theme.scss css/e-ponto-bulma-theme.css",
+    "build": "node-sass --omit-source-map-url -r sass -o css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
