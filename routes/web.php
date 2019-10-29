@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
