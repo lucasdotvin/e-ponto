@@ -39,9 +39,9 @@
             @endcomponent
 
             @component('components.form-field')
-                @slot('inputName', 'password-confirmation')
+                @slot('inputName', 'password_confirmation')
                 @slot('labelText', 'Confirmação de Senha')
-                @slot('inputType', 'password-confirmation')
+                @slot('inputType', 'password')
             @endcomponent
 
             @component('components.form-button')
