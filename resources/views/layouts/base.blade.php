@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" @yield('html-element-classes') " lang="en">
+<html class=" @stack('html-element-classes') " lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
     @stack('css')
 </head>
 
-<body class=" @yield('body-element-classes') ">
+<body class=" @stack('body-element-classes') ">
     @yield('content')
 
     @stack('scripts')
