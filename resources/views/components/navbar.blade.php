@@ -19,6 +19,7 @@
 
 <nav
     class="navbar {{ $navbarElementColorClass }} @stack('navbar-element-classes')"
+    data-role="navbar"
 >
     <div class="container">
         <div class="navbar-brand">
@@ -29,9 +30,15 @@
             <h1 class="navbar-item is-4 title">
                 Dashboard
             </h1>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-role="navbar-burger-button">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
 
-        <div class="navbar-menu">
+        <div class="navbar-menu" data-role="navbar-menu">
             <div class="navbar-end">
                 <form action="{{ route('logout') }}" id="logout-form" method="POST">
                     @method('POST')
