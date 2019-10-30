@@ -39,6 +39,28 @@
         </div>
 
         <div class="navbar-menu" data-role="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-clock"></i>
+                    </span>
+
+                    <span>
+                        Registrar Ponto
+                    </span>
+                </a>
+
+                <a class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-bell-slash"></i>
+                    </span>
+
+                    <span>
+                        Notificações
+                    </span>
+                </a>
+            </div>
+
             <div class="navbar-end">
                 <form action="{{ route('logout') }}" id="logout-form" method="POST">
                     @method('POST')
