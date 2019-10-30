@@ -68,7 +68,13 @@
                 </form>
 
                 <a class="navbar-item" data-form-submition-trigger-event="click" data-role="form-submition-trigger" data-target-form="logout-form">
-                    Sair
+                    <span class="icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+
+                    <span>
+                        Sair
+                    </span>
                 </a>
             </div>
         </div>
@@ -77,4 +83,5 @@
 
 @push('scripts')
     <script src="{{ asset('assets/js/form-submition-triggers.js') }}"></script>
+    <script src="{{ asset('assets/js/navbar-menu.js') }}"></script>
 @endpush
