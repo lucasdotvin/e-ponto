@@ -27,7 +27,7 @@
                 <img src="{{ asset('assets/img/logo.min.svg') }}" alt="">
             </a>
 
-            <h1 class="navbar-item is-4 title">
+            <h1 class="navbar-item is-4 is-marginless title">
                 Dashboard
             </h1>
 
