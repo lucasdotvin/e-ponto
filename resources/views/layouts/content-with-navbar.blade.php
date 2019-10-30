@@ -15,8 +15,6 @@
     @endcomponent
 
     <div class="container">
-        <section class="section">
-            @yield('main-content')
-        </section>
+        @yield('main-content')
     </div>
 @endsection
