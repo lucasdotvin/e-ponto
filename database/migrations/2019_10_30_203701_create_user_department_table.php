@@ -19,10 +19,10 @@ class CreateUserDepartmentTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('sector_id');
-            $table->foreign('sector_id')->references('id')->on('sectors');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
 
-            $table->unique(['user_id', 'sector_id']);
+            $table->unique(['user_id', 'department_id']);
             $table->timestamps();
         });
     }
