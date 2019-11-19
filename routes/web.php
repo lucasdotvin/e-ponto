@@ -27,3 +27,10 @@ Route::get('/', function () {
 Route::get('/authorize', function () {
     return view('auth.authorize');
 });
+
+Route::get('/authorization-result', function () {
+    $error = request()->input('error', false);
+    if ($error === 'access_denied') {
+        return redirect('authorize')->with('authorization-error', true);
+    }
+});
