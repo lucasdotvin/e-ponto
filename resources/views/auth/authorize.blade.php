@@ -28,7 +28,7 @@
     <script>
         var CLIENT_ID = '{!! env('SUAP_API_CLIENT_ID') !!}';
         var REDIRECT_URI = '{!! env('SUAP_API_REDIRECT_URI') !!}';
-        var SUAP_URL = '{!! env('SUAP_URL') !!}';
+        var SUAP_URL = '{!! config('constants.suap_url') !!}';
     </script>
 
     <!-- <jQuery> -->
