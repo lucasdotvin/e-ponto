@@ -39,11 +39,3 @@
 
     <script src="{{ asset('assets/js/suap-api/client-setup.js') }}"></script>
 @endpush
-
-@if ($authorizationError = Session::get('authorization-error'))
-    @push('scripts')
-        <script>
-            alert('Erro de autorização. Tente novamente.');
-        </script>
-    @endpush
-@endif
