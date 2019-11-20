@@ -10,7 +10,7 @@
             Log In
         </h4>
 
-        <div class="content">
+        <div class="content is-hidden" data-role="authorization-message">
             <p>
                 Por favor autorize o E-Ponto.
             </p>
