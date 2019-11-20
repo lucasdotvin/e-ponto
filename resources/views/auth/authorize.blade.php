@@ -17,7 +17,7 @@
         </div>
 
         <div class="buttons">
-            <a class="button is-fullwidth is-primary" href="{{ env('') }}" data-role="suap-login-button">
+            <a class="button is-fullwidth is-loading is-primary" href="{{ env('') }}" data-role="suap-login-button">
                 Autorizar
             </a>
         </div>
