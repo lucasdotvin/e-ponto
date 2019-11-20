@@ -14,13 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => ['guest']], function () {
+    Route::view('/authorize', 'auth.authorize');
+    Route::get('/authorization', 'Auth\ClientAuthorizationController')->name('authorization');
+});
 
 Route::group(['middleware' => ['auth']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'Auth\ClientLogoutController')->name('logout');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/authorize', 'auth.authorize');
+Route::redirect('/home', '/dashboard');
+Route::redirect('/login', '/authorize')->name('login');
