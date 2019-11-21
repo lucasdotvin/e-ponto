@@ -5,7 +5,7 @@
 @endpush
 
 @push('html-element-classes')
-has-background-light is-clipped
+    has-background-light is-clipped
 @endpush
 
 @section('content')
