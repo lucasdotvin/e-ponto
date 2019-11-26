@@ -9,6 +9,10 @@ $radius-large: 0;
 
 @import "../node_modules/bulma/bulma.sass";
 
+.navbar.ep-has-shadow {
+    box-shadow: $box-shadow !important;
+}
+
 .ep-is-fullwindow-container {
     align-items: center;
     display: flex;
