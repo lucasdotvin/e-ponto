@@ -19,8 +19,8 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'Auth\ClientLogoutController')->name('logout');
+    Route::get('/dashboard', 'DashboardController')->name('dashboard');
 });
 
 Route::get('/', function () {
