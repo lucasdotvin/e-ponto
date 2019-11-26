@@ -1,21 +1,10 @@
 @section('navbar-start-items')
-    <a class="navbar-item">
+    <a class="navbar-item" href="{{ route('punch-in-log') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
 
         <span>
-            Registrar Ponto
-        </span>
-    </a>
-
-    <a class="navbar-item">
-        <span class="icon">
-            <i class="fas fa-bell-slash"></i>
-        </span>
-
-        <span>
-            Notificações
         </span>
     </a>
 @endsection
