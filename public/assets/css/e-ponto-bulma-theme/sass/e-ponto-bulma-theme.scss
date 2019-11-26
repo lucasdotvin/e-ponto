@@ -21,6 +21,10 @@ $radius-large: 0;
     width: 100vw;
 }
 
+.ep-is-list-box {
+    margin-bottom: $size-7 / 2 !important;
+}
+
 .ep-is-pointer {
     cursor: pointer;
 }
