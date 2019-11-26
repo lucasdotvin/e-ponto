@@ -23,7 +23,7 @@ class CreatePunchInLogsTable extends Migration
             $table->time('work_start_time');
             $table->time('work_end_time');
 
-            $table->unsignedBigInteger('confirmed_by');
+            $table->unsignedBigInteger('confirmed_by')->nullable();
             $table->foreign('confirmed_by')->references('id')->on('users');
 
             $table->timestamps();
