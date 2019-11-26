@@ -5,6 +5,7 @@
         </span>
 
         <span>
+            Ponto Eletrônico
         </span>
     </a>
 @endsection
