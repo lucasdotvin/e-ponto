@@ -18,7 +18,7 @@
 @endphp
 
 <nav
-    class="navbar {{ $navbarElementColorClass }} @stack('navbar-element-classes')"
+    class="navbar {{ $navbarElementColorClass }} @stack('navbar-element-classes') ep-has-shadow"
     data-role="navbar"
 >
     <div class="container">
