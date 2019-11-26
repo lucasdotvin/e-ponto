@@ -2,12 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@php
-    $userRoleSlug = Auth::user()->role->slug;
-    $userRoleDashboard = "roles.{$userRoleSlug}.dashboard";
-@endphp
-
-@include($userRoleDashboard)
+@include($dashboardPath)
 
 @push('scripts')
     <!-- <Font Awesome> -->
