@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PunchInLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,10 @@ class PunchInLogController extends Controller
      */
     public function index()
     {
-        $punchInLogs = DB::table('punch_in_logs')
-                           ->where('worker_id', Auth::user()->id)
-                           ->get();
+        $punchInLogs = PunchInLog::where('worker_id', Auth::user()->id)
+                            ->get();
 
-        return view('roles.student.punch-in-log', [
+        return view('roles.student.punch-in-log-index', [
             'punchInLogs' => $punchInLogs
         ]);
     }
