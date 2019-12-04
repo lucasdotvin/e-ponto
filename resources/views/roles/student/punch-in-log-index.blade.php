@@ -3,7 +3,7 @@
 @section('title', 'Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-log') }}">
+    <a class="navbar-item is-active" href="{{ route('punch-in-log-index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -44,15 +44,7 @@
                             </th>
 
                             <th>
-                                <abbr title="Horário de Entrada">
-                                    HEN
-                                </abbr>
-                            </th>
-
-                            <th>
-                                <abbr title="Horário de Saída">
-                                    HSA
-                                </abbr>
+                                Ações
                             </th>
                         </tr>
                     </thead>
@@ -71,31 +63,19 @@
                                 </td>
 
                                 <td>
-                                    {{ date('d\/m\/y', strtotime($log->work_day)) }}
+                                    {{ date('d\/m\/Y', strtotime($log->work_day)) }}
                                 </td>
 
                                 <td>
-                                    {{ date('H\:i', strtotime($log->work_start_time)) }}
-                                </td>
-
-                                <td>
-                                    {{ date('H\:i', strtotime($log->work_end_time)) }}
-                                </td>
-
-                                <td class="has-text-centered">
-                                    <div class="field has-addons">
-                                        <div class="control">
-                                            <a class="button is-small is-text" href="">
+                                    <div class="field">
+                                        <div class="control has-text-centered">
+                                            <a
+                                                class="button is-small"
+                                                href="{{ route('punch-in-log-show', $log) }}"
+                                                title="Visualizar"
+                                            >
                                                 <span class="icon">
-                                                    <i class="fas fa-pen"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-
-                                        <div class="control">
-                                            <a class="button is-small is-text" href="">
-                                                <span class="icon">
-                                                    <i class="fas fa-pen"></i>
+                                                    <i class="fas fa-search"></i>
                                                 </span>
                                             </a>
                                         </div>
