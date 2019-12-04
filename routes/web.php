@@ -22,7 +22,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', 'Auth\ClientLogoutController')->name('logout');
 
     Route::get('/dashboard', 'DashboardController')->name('dashboard');
-    Route::get('/punch-in-log', 'PunchInLogController@index')->name('punch-in-log');
+
+    Route::get('/punch-in-logs', 'PunchInLogController@index')->name('punch-in-log-index');
 });
 
 Route::get('/', function () {
