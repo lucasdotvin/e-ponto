@@ -48,12 +48,16 @@ class PunchInLogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $uuid
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        //
+        $punchInLog = PunchInLog::findByUuid($uuid);
+
+        return view('roles.student.punch-in-log-show', [
+            'punchInLog' => $punchInLog
+        ]);
     }
 
     /**
