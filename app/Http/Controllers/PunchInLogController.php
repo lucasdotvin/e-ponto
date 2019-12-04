@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePunchInLog;
 use App\PunchInLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,13 +79,14 @@ class PunchInLogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  StorePunchInLog  $request
+     * @param  string  $uuid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePunchInLog $request, $uuid)
     {
-        //
+        print_r($request->validated());
+        die;
     }
 
     /**
