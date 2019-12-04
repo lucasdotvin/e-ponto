@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashboardController')->name('dashboard');
 
     Route::get('/punch-in-logs', 'PunchInLogController@index')->name('punch-in-log-index');
+    Route::get('/punch-in-log/{punch_in_log}', 'PunchInLogController@show')->name('punch-in-log-show');
 });
 
 Route::get('/', function () {
