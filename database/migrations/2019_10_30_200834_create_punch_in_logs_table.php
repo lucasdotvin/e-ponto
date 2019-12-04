@@ -15,6 +15,7 @@ class CreatePunchInLogsTable extends Migration
     {
         Schema::create('punch_in_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('uuid');
 
             $table->unsignedBigInteger('worker_id');
             $table->foreign('worker_id')->references('id')->on('users');
