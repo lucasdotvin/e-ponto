@@ -3,7 +3,7 @@
 @section('title', 'Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-log-index') }}">
+    <a class="navbar-item" href="{{ route('punch-in-log.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -21,7 +21,7 @@
         </h3>
 
         <main>
-            <form action="{{ route('punch-in-log-update', $punchInLog) }}" method="POST">
+            <form action="{{ route('punch-in-log.update', $punchInLog) }}" method="POST">
                 @method('PUT')
                 @csrf
 
