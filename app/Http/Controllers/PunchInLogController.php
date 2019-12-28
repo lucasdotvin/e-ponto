@@ -95,8 +95,16 @@ class PunchInLogController extends Controller
      */
     public function update(StorePunchInLog $request, $uuid)
     {
-        print_r($request->validated());
-        die;
+        $validatedData = $request->validated();
+
+        $punchInLog = PunchInLog::findByUuid($uuid);
+        $punchInLog->work_day = $validatedData['work-day'];
+        $punchInLog->work_start_time = $validatedData['work-start-time'];
+        $punchInLog->work_end_time = $validatedData['work-end-time'];
+        $punchInLog->work_total_time = $validatedData['work-total-time'];
+        $punchInLog->save();
+
+        return redirect(route('punch-in-log.show', $uuid));
     }
 
     /**
