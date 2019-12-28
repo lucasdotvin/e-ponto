@@ -32,9 +32,9 @@
 
 @push('scripts')
     <script>
-        var CLIENT_ID = '{!! env('SUAP_API_CLIENT_ID') !!}';
-        var REDIRECT_URI = '{!! env('SUAP_API_REDIRECT_URI') !!}';
-        var SUAP_URL = '{!! config('constants.suap_url') !!}';
+        var CLIENT_ID = '{!! config('suap.api_cliend_id') !!}';
+        var REDIRECT_URI = '{!! config('suap.api_redirect_uri') !!}';
+        var SUAP_URL = '{!! config('suap.url') !!}';
     </script>
 
     <script>
