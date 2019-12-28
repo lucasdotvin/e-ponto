@@ -110,11 +110,14 @@ class PunchInLogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $uuid
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        //
+        $punchInLog = PunchInLog::findByUuid($uuid);
+        $punchInLog->delete();
+
+        return redirect(route('punch-in-log.index'));
     }
 }
