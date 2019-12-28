@@ -19,14 +19,18 @@
         <main class="content">
             <div class="field is-grouped ep-is-vcentered">
                 <div class="control is-expanded">
-                    <progress class="progress is-medium is-primary" max="100" value="75">
-                        75
+                    <progress
+                        class="progress is-medium is-primary"
+                        max="{{ $totalWorkload }}"
+                        value="{{ $completeWorkload }}"
+                    >
+                        {{ number_format(($completeWorkload / $totalWorkload) * 100, 2) }}
                     </progress>
                 </div>
 
                 <div class="control">
                     <span class="tag">
-                        75%
+                        {{ number_format(($completeWorkload / $totalWorkload) * 100, 2) }}%
                     </span>
                 </div>
             </div>
@@ -42,11 +46,11 @@
                             <hr>
 
                             <p>
-                                Carga Horária Total: <strong>100h</strong>.
+                                Carga Horária Total: <strong>{{ $totalWorkload }}h</strong>.
                             </p>
 
                             <p>
-                                Carga Horária Cumprida: <strong>75h</strong>.
+                                Carga Horária Cumprida e Confirmada: <strong>{{ number_format($completeWorkload, 2) }}h</strong>.
                             </p>
                         </div>
                     </details>
