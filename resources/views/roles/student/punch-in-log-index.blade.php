@@ -30,71 +30,73 @@
         </h2>
 
         <main>
-            <div class="table-container">
-                <table class="table is-bordered is-narrow is-hoverable is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th class="has-text-centered">
-                                <abbr title="Confirmado pelo Coordenador">
-                                    CCO
-                                </abbr>
-                            </th>
             @if($punchInLogs->isEmpty())
                 <div class="content has-text-centered">
                     <p class="is-italic">
                         Não há registros de ponto.
                     </p>
                 </div>
-
-                            <th>
-                                <abbr title="Data">
-                                    DAT
-                                </abbr>
-                            </th>
-
-                            <th>
-                                Ações
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($punchInLogs as $log)
+            @else
+                <div class="table-container">
+                    <table class="table is-bordered is-narrow is-hoverable is-fullwidth">
+                        <thead>
                             <tr>
-                                <td class="has-text-centered">
-                                    <span class="icon">
-                                        @if ($log->confirmed_by)
-                                            <i class="fas fa-check has-text-primary"></i>
-                                        @else
-                                            <i class="fas fa-ban has-text-danger"></i>
-                                        @endif
-                                    </span>
-                                </td>
+                                <th class="has-text-centered">
+                                    <abbr title="Confirmado pelo Coordenador">
+                                        CCO
+                                    </abbr>
+                                </th>
 
-                                <td>
-                                    {{ date('d\/m\/Y', strtotime($log->work_day)) }}
-                                </td>
+                                <th>
+                                    <abbr title="Data">
+                                        DAT
+                                    </abbr>
+                                </th>
 
-                                <td>
-                                    <div class="field">
-                                        <div class="control has-text-centered">
-                                            <a
-                                                class="button is-small"
-                                                href="{{ route('punch-in-log-show', $log) }}"
-                                                title="Visualizar"
-                                            >
-                                                <span class="icon">
-                                                    <i class="fas fa-search"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th>
+                                    Ações
+                                </th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($punchInLogs as $log)
+                                <tr>
+                                    <td class="has-text-centered">
+                                        <span class="icon">
+                                            @if ($log->confirmed_by)
+                                                <i class="fas fa-check has-text-primary"></i>
+                                            @else
+                                                <i class="fas fa-ban has-text-danger"></i>
+                                            @endif
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        {{ date('d\/m\/Y', strtotime($log->work_day)) }}
+                                    </td>
+
+                                    <td>
+                                        <div class="field">
+                                            <div class="control has-text-centered">
+                                                <a
+                                                    class="button is-small"
+                                                    href="{{ route('punch-in-log.show', $log) }}"
+                                                    title="Visualizar"
+                                                >
+                                                    <span class="icon">
+                                                        <i class="fas fa-search"></i>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
         </main>
     </div>
 @endsection
