@@ -38,12 +38,22 @@ class PunchInLogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StorePunchInLog  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePunchInLog $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $punchInLog = new PunchInLog();
+        $punchInLog->worker_id = Auth::user()->id;
+        $punchInLog->work_day = $validatedData['work-day'];
+        $punchInLog->work_start_time = $validatedData['work-start-time'];
+        $punchInLog->work_end_time = $validatedData['work-end-time'];
+        $punchInLog->work_total_time = $validatedData['work-total-time'];
+        $punchInLog->save();
+
+        return redirect(route('punch-in-log.index'));
     }
 
     /**
