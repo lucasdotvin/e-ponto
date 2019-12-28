@@ -23,6 +23,7 @@ class CreatePunchInLogsTable extends Migration
             $table->date('work_day');
             $table->time('work_start_time');
             $table->time('work_end_time');
+            $table->unsignedSmallInteger('work_total_time');
 
             $table->unsignedBigInteger('confirmed_by')->nullable();
             $table->foreign('confirmed_by')->references('id')->on('users');
