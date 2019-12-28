@@ -24,6 +24,18 @@ class RolesTableSeeder extends Seeder
                 'slug' => 'student',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Coordenador',
+                'slug' => 'coordinator',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Administrador',
+                'slug' => 'administrator',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }
