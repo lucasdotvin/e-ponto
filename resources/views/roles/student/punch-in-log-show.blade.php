@@ -3,7 +3,7 @@
 @section('title', 'Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-log-index') }}">
+    <a class="navbar-item" href="{{ route('punch-in-log.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -56,7 +56,7 @@
             <footer>
                 <div class="field is-grouped is-grouped-right">
                     <div class="control">
-                        <a class="button" href="{{ route('punch-in-log-edit', $punchInLog) }}">
+                        <a class="button" href="{{ route('punch-in-log.edit', $punchInLog) }}">
                             Editar
                         </a>
                     </div>
