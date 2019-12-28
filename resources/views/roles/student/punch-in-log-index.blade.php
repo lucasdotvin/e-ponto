@@ -18,6 +18,7 @@
     <div class="box">
         <a
             class="button is-fullwidth is-primary is-outlined"
+            href="{{ route('punch-in-log.create') }}"
         >
             Registrar Novo
         </a>
