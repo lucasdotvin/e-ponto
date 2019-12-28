@@ -39,6 +39,12 @@
                                     CCO
                                 </abbr>
                             </th>
+            @if($punchInLogs->isEmpty())
+                <div class="content has-text-centered">
+                    <p class="is-italic">
+                        Não há registros de ponto.
+                    </p>
+                </div>
 
                             <th>
                                 <abbr title="Data">
