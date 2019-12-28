@@ -44,4 +44,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    /**
+     * Get the department of the user.
+     */
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
 }
