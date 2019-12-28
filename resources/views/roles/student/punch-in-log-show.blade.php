@@ -62,11 +62,14 @@
                     </div>
 
                     <div class="control">
-                        <form action="">
+                        <form method="POST">
+                            @method('DELETE')
+                            @csrf
+
+                            <button class="button is-danger is-outlined" type="submit">
+                                Remover
+                            </button>
                         </form>
-                        <a class="button is-danger is-outlined" href="">
-                            Remover
-                        </a>
                     </div>
                 </div>
             </footer>
