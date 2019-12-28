@@ -31,7 +31,13 @@
                     </label>
 
                     <div class="control">
-                        <input class="input" id="work-day-field" name="work-day" type="date" value="{{ $punchInLog->work_day }}">
+                        <input
+                            class="input"
+                            id="work-day-field"
+                            name="work-day"
+                            type="date"
+                            value="{{ old('work-day', $punchInLog->work_day) }}"
+                        >
                     </div>
 
                     @error('work-day')
@@ -47,7 +53,13 @@
                     </label>
 
                     <div class="control">
-                        <input class="input" id="work-start-time-field" name="work-start-time" type="time" value="{{ $punchInLog->work_start_time }}">
+                        <input
+                            class="input"
+                            id="work-start-time-field"
+                            name="work-start-time"
+                            type="time"
+                            value="{{ old('work-start-time', $punchInLog->work_start_time) }}"
+                        >
                     </div>
 
                     @error('work-start-time')
@@ -63,7 +75,13 @@
                     </label>
 
                     <div class="control">
-                        <input class="input" id="work-end-time-field" name="work-end-time" type="time" value="{{ $punchInLog->work_end_time }}">
+                        <input
+                            class="input"
+                            id="work-end-time-field"
+                            name="work-end-time"
+                            type="time"
+                            value="{{ old('work-end-time', $punchInLog->work_end_time) }}"
+                        >
                     </div>
 
                     @error('work-end-time')
