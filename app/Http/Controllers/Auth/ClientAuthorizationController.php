@@ -26,8 +26,8 @@ class ClientAuthorizationController extends Controller
             ]
         ]);
 
-        $suapApiResourceUrl = config('constants.suap_url');
-        $suapApiResourceUrl .= config('constants.suap_api_resource_url');
+        $suapApiResourceUrl = config('suap.url');
+        $suapApiResourceUrl .= config('suap.api_resource_url');
 
         $userData = $client->get($suapApiResourceUrl, [
             'form_params' => [
