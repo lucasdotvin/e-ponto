@@ -16,7 +16,9 @@
 
 @section('main-content')
     <div class="box">
-        <a class="button is-fullwidth is-primary is-outlined" href="">
+        <a
+            class="button is-fullwidth is-primary is-outlined"
+        >
             Registrar Novo
         </a>
     </div>
