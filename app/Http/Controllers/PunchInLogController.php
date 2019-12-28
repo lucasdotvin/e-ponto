@@ -32,7 +32,7 @@ class PunchInLogController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.student.punch-in-log-create');
     }
 
     /**
