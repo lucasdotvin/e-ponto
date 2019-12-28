@@ -11,9 +11,15 @@
         </h4>
 
         <div class="content is-hidden" data-role="authorization-message">
-            <p>
-                Por favor autorize o E-Ponto.
-            </p>
+            @if(request()->error)
+                <p class="has-text-danger">
+                    Por favor autorize o E-Ponto.
+                </p>
+            @else
+                <p>
+                    Por favor autorize o E-Ponto.
+                </p>
+            @endif
         </div>
 
         <div class="buttons">
