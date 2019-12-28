@@ -3,7 +3,7 @@
 @section('title', 'Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item is-active" href="{{ route('punch-in-log-index') }}">
+    <a class="navbar-item is-active" href="{{ route('punch-in-log.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
