@@ -11,5 +11,24 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.sass(
+    'resources/sass/e-ponto-bulma-theme.scss',
+    'public/assets/css'
+);
+
+mix.sass(
+    'resources/sass/form-page/index.scss',
+    'public/assets/css/form-page'
+);
+
+mix.copyDirectory(
+    'node_modules/@fortawesome/fontawesome-free',
+    'public/assets/js/fontawesome'
+);
+
+mix.copyDirectory('resources/js', 'public/assets/js');
+mix.copyDirectory('resources/img', 'public/assets/img');
+
+if (mix.inProduction()) {
+    mix.version();
+}
