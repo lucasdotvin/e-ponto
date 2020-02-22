@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\AcademicSystemClientServiceProvider::class,
     ],
 
     /*
@@ -226,7 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'BusinessDays' => App\Helpers\BusinessDays::class
+        'BusinessDays' => App\Helpers\BusinessDays::class,
+        'SUAPClient' => App\Services\SUAPClientService::class,
     ],
 
 ];
