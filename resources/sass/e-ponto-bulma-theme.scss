@@ -7,7 +7,7 @@ $primary: $ep-primary;
 $radius: 0;
 $radius-large: 0;
 
-@import "../node_modules/bulma/bulma.sass";
+@import "~bulma/bulma.sass";
 
 .navbar.ep-has-shadow {
     box-shadow: $box-shadow !important;
