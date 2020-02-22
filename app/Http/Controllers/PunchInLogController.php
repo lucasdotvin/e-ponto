@@ -53,7 +53,7 @@ class PunchInLogController extends Controller
         $punchInLog->work_total_time = $validatedData['work-total-time'];
         $punchInLog->save();
 
-        return redirect(route('punch-in-log.index'));
+        return redirect(route('punch-in-logs.index'));
     }
 
     /**
@@ -104,7 +104,7 @@ class PunchInLogController extends Controller
         $punchInLog->work_total_time = $validatedData['work-total-time'];
         $punchInLog->save();
 
-        return redirect(route('punch-in-log.show', $uuid));
+        return redirect(route('punch-in-logs.show', $uuid));
     }
 
     /**
@@ -118,6 +118,6 @@ class PunchInLogController extends Controller
         $punchInLog = PunchInLog::findByUuid($uuid);
         $punchInLog->delete();
 
-        return redirect(route('punch-in-log.index'));
+        return redirect(route('punch-in-logs.index'));
     }
 }

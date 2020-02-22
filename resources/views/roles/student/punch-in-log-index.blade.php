@@ -3,7 +3,7 @@
 @section('title', 'Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item is-active" href="{{ route('punch-in-log.index') }}">
+    <a class="navbar-item is-active" href="{{ route('punch-in-logs.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -18,7 +18,7 @@
     <div class="box">
         <a
             class="button is-fullwidth is-primary is-outlined"
-            href="{{ route('punch-in-log.create') }}"
+            href="{{ route('punch-in-logs.create') }}"
         >
             Registrar Novo
         </a>
@@ -81,7 +81,7 @@
                                             <div class="control has-text-centered">
                                                 <a
                                                     class="button is-small"
-                                                    href="{{ route('punch-in-log.show', $log) }}"
+                                                    href="{{ route('punch-in-logs.show', $log) }}"
                                                     title="Visualizar"
                                                 >
                                                     <span class="icon">

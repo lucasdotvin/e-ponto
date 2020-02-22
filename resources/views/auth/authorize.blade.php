@@ -38,7 +38,7 @@
     </script>
 
     <script>
-        var EPONTO_API_AUTHORIZATION_URL = '{!! route('authorization') !!}';
+        var EPONTO_API_AUTHORIZATION_URL = '{!! route('login') !!}';
     </script>
 
     <!-- <jQuery> -->

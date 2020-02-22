@@ -20,7 +20,7 @@ class ProtectConfirmedPunchInLogFromEditing
         $punchInLog = PunchInLog::findByUuid($punchInLogUuid);
 
         if ($punchInLog->confirmed_by) {
-            return redirect(route('punch-in-log.show', $punchInLog));
+            return redirect(route('punch-in-logs.show', $punchInLog));
         }
 
         return $next($request);

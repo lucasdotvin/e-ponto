@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest']], function () {
     Route::view('/authorize', 'auth.authorize');
-    Route::get('/authorization', 'Auth\ClientAuthorizationController')->name('authorization');
+    Route::post('/login', 'Auth\ClientAuthorizationController')->name('login');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -23,21 +23,17 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', 'DashboardController')->name('dashboard');
 
-    Route::get('/punch-in-logs', 'PunchInLogController@index')->name('punch-in-log.index');
-    Route::get('/punch-in-logs/create', 'PunchInLogController@create')->name('punch-in-log.create');
-    Route::post('/punch-in-logs', 'PunchInLogController@store')->name('punch-in-log.store');
-    Route::get('/punch-in-log/{punch_in_log}', 'PunchInLogController@show')->name('punch-in-log.show');
+    Route::resource('punch-in-logs', 'PunchInLogController')->except([
+        'edit', 'update', 'destroy'
+    ]);
 
-    Route::group(['middleware' => 'ProtectConfirmedPunchInLogFromEditing'], function () {
-        Route::get('/punch-in-log/{punch_in_log}/edit', 'PunchInLogController@edit')->name('punch-in-log.edit');
-        Route::put('/punch-in-log/{punch_in_log}', 'PunchInLogController@update')->name('punch-in-log.update');
-        Route::delete('/punch-in-log/{punch_in_log}', 'PunchInLogController@destroy')->name('punch-in-log.destroy');
-    });
+    Route::resource('punch-in-logs', 'PunchInLogController')
+        ->only(['edit', 'update', 'destroy'])
+        ->middleware('ProtectConfirmedPunchInLogFromEditing');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::redirect('/home', '/dashboard');
-Route::redirect('/login', '/authorize')->name('login');
+Route::redirect('/home', 'dashboard');
