@@ -14,6 +14,7 @@
         @endif
     </title>
 
+    <link rel="stylesheet" href="{{ mix('assets/css/e-ponto-bulma-theme.css') }}">
     @stack('css')
 </head>
 
