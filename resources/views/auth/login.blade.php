@@ -23,7 +23,7 @@
         </div>
 
         <div class="buttons">
-            <a class="button is-fullwidth is-loading is-primary" href="{{ env('') }}" data-role="suap-login-button">
+            <a class="button is-fullwidth is-loading is-primary" data-role="suap-login-button">
                 Autorizar
             </a>
         </div>
@@ -32,13 +32,13 @@
 
 @push('scripts')
     <script>
-        var CLIENT_ID = '{!! config('suap.api_cliend_id') !!}';
-        var REDIRECT_URI = '{!! config('suap.api_redirect_uri') !!}';
-        var SUAP_URL = '{!! config('suap.url') !!}';
+        const CLIENT_ID = '{!! config('suap.api_cliend_id') !!}';
+        const REDIRECT_URI = '{!! config('suap.api_redirect_uri') !!}';
+        const SUAP_URL = '{!! config('suap.url') !!}';
     </script>
 
     <script>
-        var EPONTO_API_AUTHORIZATION_URL = '{!! route('login') !!}';
+        const EPONTO_API_AUTHORIZATION_URL = '{!! route('login') !!}';
     </script>
 
     <!-- <jQuery> -->
