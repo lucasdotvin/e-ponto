@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['guest']], function () {
-    Route::view('/authorize', 'auth.authorize');
-    Route::post('/login', 'Auth\ClientAuthorizationController')->name('login');
+    Route::view('/login', 'auth.login')->name('login');
+
+    Route::post('/login', 'Auth\ClientAuthorizationController')
+        ->name('login');
 });
 
 Route::group(['middleware' => ['auth']], function () {
