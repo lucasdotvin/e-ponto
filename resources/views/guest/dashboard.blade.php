@@ -14,6 +14,9 @@
                 Caso acredite que isso se trata de um equívoco, procure o serviço social.
                 Outras dúvidas podem ser encaminhadas ao seguinte e-mail:
 
+                <a href="mailto:{{ config('contact.support') }}">
+                    {{ config('contact.support') }}
+                </a>
             </p>
 
             <p class="has-text-right is-italic">
