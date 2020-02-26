@@ -228,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'BusinessDays' => App\Helpers\BusinessDays::class,
+        'StudentWorkloadData' => App\Services\StudentWorkloadDataService::class,
         'SUAPClient' => App\Services\SUAPClientService::class,
     ],
 
