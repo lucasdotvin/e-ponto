@@ -17,4 +17,12 @@ class PunchInLog extends Model
     protected $fillable = [
         'work_day', 'work_start_time', 'work_end_time', 'work_total_time'
     ];
+
+    /**
+     * Get the user of the punch in log.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'worker_id');
+    }
 }
