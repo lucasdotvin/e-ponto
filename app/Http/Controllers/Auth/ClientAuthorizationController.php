@@ -22,8 +22,9 @@ class ClientAuthorizationController extends Controller
             'scope' => request()->input('scope')
         ];
 
-        $client = new \SUAPClient();
-        $userData = $client->getUserData($authenticationData);
+        session($authenticationData);
+        $client = new \SUAPClient($authenticationData);
+        $userData = $client->getUserData();
 
         $user = User::firstOrCreate([
             'email' => $userData['email'],
