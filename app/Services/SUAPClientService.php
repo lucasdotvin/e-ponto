@@ -50,5 +50,17 @@ class SUAPClientService implements AcademicSystemClientInterface
         return $userData;
     }
 
-    public function logout (array $authenticationData): array {}
+    public function logout()
+    {
+        $client = $this->getClient();
+        $suapApiLogoutUrl = config('suap.url');
+        $suapApiLogoutUrl .= config('suap.oauth_logout_url');
+
+        $client->post($suapApiLogoutUrl, [
+            'form_params' => [
+                'token' => $this->token,
+                'client_id' => $this->clientID
+            ]
+        ]);
+    }
 }
