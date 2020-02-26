@@ -12,9 +12,7 @@ interface AcademicSystemClientInterface
     public function getUserData (): array;
 
     /**
-     * Faz logout no sistema.
-     *
-     * @return bool Sucesso da operação.
+     * Faz logout no sistema, revogando o token de acesso.
      **/
     public function logout ();
 }
