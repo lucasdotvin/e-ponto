@@ -28,7 +28,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('dashboard', 'GeneralDashboardController');
     });
 
-    Route::get('/dashboard', 'DashboardController')->name('dashboard');
 
     Route::resource('punch-in-logs', 'PunchInLogController')->except([
         'edit', 'update', 'destroy'
@@ -40,4 +39,3 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-Route::redirect('/home', 'dashboard');
