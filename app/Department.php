@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     /**
-     * Get the users for the blog post.
+     * Get the users for the department.
      */
     public function users()
     {
