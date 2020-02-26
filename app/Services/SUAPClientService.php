@@ -9,6 +9,12 @@ class SUAPClientService implements AcademicSystemClientInterface
 {
     public function getUserData (array $authenticationData): array {
         $authToken = $authenticationData['token'];
+    function __construct(array $authenticationData)
+    {
+        $this->token = $authenticationData['token'];
+        $this->scope = $authenticationData['scope'];
+        $this->clientID = config('suap.api_cliend_id');
+    }
         $client = new Client([
             'headers' => [
                 'Accept' => 'application/json',
