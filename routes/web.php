@@ -33,6 +33,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('punch-in-logs', 'PunchInLogController')->except([
         'edit', 'update', 'destroy'
     ]);
+    Route::middleware(['check-role:guest'])
+        ->name('guest.')
+        ->namespace('Guest')
+        ->prefix('guest')
+        ->group(function () {
+            Route::view('/', 'guest.dashboard')
+                ->name('dashboard');
+        });
 
     Route::resource('punch-in-logs', 'PunchInLogController')
         ->only(['edit', 'update', 'destroy'])
