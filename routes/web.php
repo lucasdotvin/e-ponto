@@ -30,9 +30,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', 'Auth\ClientLogoutController')
         ->name('logout');
 
-    Route::resource('punch-in-logs', 'PunchInLogController')->except([
-        'edit', 'update', 'destroy'
-    ]);
     Route::middleware(['check-role:guest'])
         ->name('guest.')
         ->namespace('Guest')
@@ -42,9 +39,18 @@ Route::group(['middleware' => ['auth']], function () {
                 ->name('dashboard');
         });
 
-    Route::resource('punch-in-logs', 'PunchInLogController')
-        ->only(['edit', 'update', 'destroy'])
-        ->middleware('ProtectConfirmedPunchInLogFromEditing');
-});
+    Route::middleware(['check-role:student'])
+        ->name('student.')
+        ->namespace('Student')
+        ->prefix('student')
+        ->group(function () {
+            Route::get('/', 'DashboardController')
+                ->name('dashboard');
 
+            Route::resource('punch-in-logs', 'PunchInLogController')
+                ->except(['edit', 'update', 'destroy']);
 
+            Route::resource('punch-in-logs', 'PunchInLogController')
+                ->only(['edit', 'update', 'destroy'])
+                ->middleware('ProtectConfirmedPunchInLogAgainstEditing');
+        });
