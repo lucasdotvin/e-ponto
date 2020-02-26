@@ -21,13 +21,14 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::post('/logout', 'Auth\ClientLogoutController')->name('logout');
     Route::name('dashboard')->group(function () {
         Route::get('/', 'GeneralDashboardController');
         Route::get('home', 'GeneralDashboardController');
         Route::get('dashboard', 'GeneralDashboardController');
     });
 
+    Route::post('/logout', 'Auth\ClientLogoutController')
+        ->name('logout');
 
     Route::resource('punch-in-logs', 'PunchInLogController')->except([
         'edit', 'update', 'destroy'
