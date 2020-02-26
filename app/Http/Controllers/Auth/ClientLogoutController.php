@@ -16,6 +16,14 @@ class ClientLogoutController extends Controller
      */
     public function __invoke()
     {
+        $authenticationData = [
+            'token' => session('token'),
+            'scope' => session('scope')
+        ];
+
+        $client = new \SUAPClient($authenticationData);
+        $client->logout();
+
         Auth::logout();
         Cookie::queue(
             Cookie::forget('suapToken')
