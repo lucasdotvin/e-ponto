@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePunchInLog;
 use App\PunchInLog;
 use Illuminate\Http\Request;
@@ -18,9 +19,9 @@ class PunchInLogController extends Controller
     public function index()
     {
         $punchInLogs = PunchInLog::where('worker_id', Auth::user()->id)
-                            ->get();
+            ->get();
 
-        return view('roles.student.punch-in-log-index', [
+        return view('student.punch-in-log-index', [
             'punchInLogs' => $punchInLogs
         ]);
     }
@@ -32,7 +33,7 @@ class PunchInLogController extends Controller
      */
     public function create()
     {
-        return view('roles.student.punch-in-log-create');
+        return view('student.punch-in-log-create');
     }
 
     /**
@@ -53,7 +54,7 @@ class PunchInLogController extends Controller
         $punchInLog->work_total_time = $validatedData['work-total-time'];
         $punchInLog->save();
 
-        return redirect(route('punch-in-logs.index'));
+        return redirect(route('student.punch-in-logs.index'));
     }
 
     /**
@@ -66,7 +67,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('roles.student.punch-in-log-show', [
+        return view('student.punch-in-log-show', [
             'punchInLog' => $punchInLog
         ]);
     }
@@ -81,7 +82,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('roles.student.punch-in-log-edit', [
+        return view('student.punch-in-log-edit', [
             'punchInLog' => $punchInLog
         ]);
     }
@@ -104,7 +105,7 @@ class PunchInLogController extends Controller
         $punchInLog->work_total_time = $validatedData['work-total-time'];
         $punchInLog->save();
 
-        return redirect(route('punch-in-logs.show', $uuid));
+        return redirect(route('student.punch-in-logs.show', $uuid));
     }
 
     /**
@@ -118,6 +119,6 @@ class PunchInLogController extends Controller
         $punchInLog = PunchInLog::findByUuid($uuid);
         $punchInLog->delete();
 
-        return redirect(route('punch-in-logs.index'));
+        return redirect(route('student.punch-in-logs.index'));
     }
 }
