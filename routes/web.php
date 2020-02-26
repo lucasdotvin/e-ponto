@@ -32,8 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
         ->middleware('ProtectConfirmedPunchInLogFromEditing');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::redirect('/home', 'dashboard');
