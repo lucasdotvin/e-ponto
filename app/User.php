@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Department');
     }
+
+    /**
+     * Get the punch in logs of the user.
+     */
+    public function punchInLogs()
+    {
+        return $this->hasMany('App\PunchInLog', 'worker_id');
+    }
 }
