@@ -36,6 +36,11 @@ class StorePunchInLog extends FormRequest
 
             'work-total-time' => [
                 'required'
+            ],
+
+            'coordinator-confirmation' => [
+                'sometimes',
+                'accepted'
             ]
         ];
     }
