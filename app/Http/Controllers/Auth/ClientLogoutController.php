@@ -29,6 +29,6 @@ class ClientLogoutController extends Controller
             Cookie::forget('suapToken')
         );
 
-        return redirect('authorize');
+        return redirect('login');
     }
 }
