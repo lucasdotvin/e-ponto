@@ -1,9 +1,9 @@
 @extends('layouts.content-with-navbar')
 
-@section('title', 'Ponto')
+@section('title', 'Visualizar Registro de Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-logs.index') }}">
+    <a class="navbar-item" href="{{ route('student.punch-in-logs.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -56,7 +56,7 @@
             <footer>
                 <div class="field is-grouped is-grouped-right">
                     <div class="control">
-                        <a class="button" href="{{ route('punch-in-logs.edit', $punchInLog) }}">
+                        <a class="button" href="{{ route('student.punch-in-logs.edit', $punchInLog) }}">
                             Editar
                         </a>
                     </div>
@@ -76,10 +76,3 @@
         @endif
     </div>
 @endsection
-
-@push('scripts')
-    <!-- <Font Awesome> -->
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/solid.min.js') }}"></script>
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/fontawesome.min.js') }}"></script>
-    <!-- </Font Awesome> -->
-@endpush

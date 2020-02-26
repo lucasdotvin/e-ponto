@@ -1,9 +1,9 @@
 @extends('layouts.content-with-navbar')
 
-@section('title', 'Ponto')
+@section('title', 'Editar Registro de Ponto')
 
 @section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-logs.index') }}">
+    <a class="navbar-item" href="{{ route('student.punch-in-logs.index') }}">
         <span class="icon">
             <i class="fas fa-clock"></i>
         </span>
@@ -21,7 +21,7 @@
         </h3>
 
         <main>
-            <form action="{{ route('punch-in-logs.update', $punchInLog) }}" method="POST">
+            <form action="{{ route('student.punch-in-logs.update', $punchInLog) }}" method="POST">
                 @method('PUT')
                 @csrf
 
@@ -102,10 +102,3 @@
         </main>
     </div>
 @endsection
-
-@push('scripts')
-    <!-- <Font Awesome> -->
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/solid.min.js') }}"></script>
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/fontawesome.min.js') }}"></script>
-    <!-- </Font Awesome> -->
-@endpush

@@ -1,3 +1,7 @@
+@extends('layouts.content-with-navbar')
+
+@section('title', 'Dashboard')
+
 @section('main-content')
     <div class="box">
         <h2 class="title is-5">
@@ -33,7 +37,7 @@
 
                             <br>
 
-                            <a href="">
+                            <a href="{{ route('coordinator.student-profile', $student) }}">
                                 Visualizar dados
                             </a>
                         </div>

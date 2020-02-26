@@ -2,27 +2,15 @@
 
 @section('title', 'Ponto')
 
-@section('navbar-start-items')
-    <a class="navbar-item" href="{{ route('punch-in-logs.index') }}">
-        <span class="icon">
-            <i class="fas fa-clock"></i>
-        </span>
-
-        <span>
-            Ponto Eletrônico
-        </span>
-    </a>
-@endsection
-
 @section('main-content')
     <div class="box">
         <h3 class="title is-5">
-            Registrar Ponto
+            Confirmar Ponto
         </h3>
 
         <main>
-            <form action="{{ route('punch-in-logs.store') }}" method="POST">
-                @method('POST')
+            <form action="{{ route('coordinator.punch-in-logs.update', $punchInLog) }}" method="POST">
+                @method('PUT')
                 @csrf
 
                 <div class="field">
@@ -36,7 +24,8 @@
                             id="work-day-field"
                             name="work-day"
                             type="date"
-                            value="{{ old('work-day', date('Y\-m\-d')) }}"
+                            value="{{ $punchInLog->work_day }}"
+                            readonly
                         >
                     </div>
 
@@ -58,7 +47,8 @@
                             id="work-start-time-field"
                             name="work-start-time"
                             type="time"
-                            value="{{ old('work-start-time') }}"
+                            value="{{ $punchInLog->work_start_time }}"
+                            readonly
                         >
                     </div>
 
@@ -80,7 +70,8 @@
                             id="work-end-time-field"
                             name="work-end-time"
                             type="time"
-                            value="{{ old('work-end-time') }}"
+                            value="{{ $punchInLog->work_end_time }}"
+                            readonly
                         >
                     </div>
 
@@ -92,20 +83,41 @@
                 </div>
 
                 <div class="field">
-                    <div class="control">
-                        <button class="button is-fullwidth is-outlined is-primary" type="submit">
-                            Registrar
-                        </button>
+                    <label class="checkbox">
+                        <input name="coordinator-confirmation" type="checkbox">
+
+                        <span>
+                            Eu confirmo essa declaração de ponto e estou ciente que essa ação é irreversível.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="field">
+                    <div class="level is-mobile">
+                        <div class="level-left">
+                            <div class="control">
+                                <a class="button" href="{{ route('coordinator.punch-in-logs.show', $punchInLog) }}">
+                                    <span class="icon">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </span>
+
+                                    <span>
+                                        Voltar
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="level-right">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">
+                                    Confirmar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </main>
     </div>
 @endsection
-
-@push('scripts')
-    <!-- <Font Awesome> -->
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/solid.min.js') }}"></script>
-    <script src="{{ asset('assets/js/fontawesome-free-5.11.2-web/js/fontawesome.min.js') }}"></script>
-    <!-- </Font Awesome> -->
-@endpush
