@@ -7,28 +7,40 @@ use GuzzleHttp\Client;
 
 class SUAPClientService implements AcademicSystemClientInterface
 {
-    public function getUserData (array $authenticationData): array {
-        $authToken = $authenticationData['token'];
     function __construct(array $authenticationData)
     {
         $this->token = $authenticationData['token'];
         $this->scope = $authenticationData['scope'];
         $this->clientID = config('suap.api_cliend_id');
     }
+
+    /**
+     * Create Guzzle client.
+     *
+     * @return Client
+     * @author 
+     **/
+    private function getClient()
+    {
         $client = new Client([
             'headers' => [
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer ' . $authToken
+                'Authorization' => 'Bearer ' . $this->token
             ]
         ]);
 
+        return $client;
+    }
+
+    public function getUserData(): array
+    {
+        $client = $this->getClient();
         $suapApiResourceUrl = config('suap.url');
         $suapApiResourceUrl .= config('suap.api_resource_url');
-        $scope = $authenticationData['scope'];
 
         $userData = $client->get($suapApiResourceUrl, [
             'form_params' => [
-                'scope' => $scope
+                'scope' => $this->scope
             ]
         ]);
 
