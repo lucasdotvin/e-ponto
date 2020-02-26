@@ -54,3 +54,26 @@ Route::group(['middleware' => ['auth']], function () {
                 ->only(['edit', 'update', 'destroy'])
                 ->middleware('ProtectConfirmedPunchInLogAgainstEditing');
         });
+
+    Route::middleware(['check-role:coordinator'])
+        ->name('coordinator.')
+        ->namespace('Coordinator')
+        ->prefix('coordinator')
+        ->group(function () {
+            Route::get('/', 'DashboardController')
+                ->name('dashboard');
+
+            Route::get('students/{uuid}/', 'StudentProfileController')
+                ->name('student-profile');
+
+            Route::resource('students.punch-in-logs', 'PunchInLogController')
+                ->only(['index']);
+
+            Route::resource('punch-in-logs', 'PunchInLogController')
+                ->only(['show']);
+
+            Route::resource('punch-in-logs', 'PunchInLogController')
+                ->only(['edit', 'update'])
+                ->middleware('ProtectConfirmedPunchInLogAgainstEditing');
+        });
+});
