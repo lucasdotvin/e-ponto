@@ -28,7 +28,7 @@
             </a>
 
             <h1 class="navbar-item is-4 is-marginless title">
-                @yield('title')
+                E-Ponto
             </h1>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-role="navbar-burger-button">
