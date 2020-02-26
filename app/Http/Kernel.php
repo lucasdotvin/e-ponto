@@ -62,7 +62,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        'ProtectConfirmedPunchInLogFromEditing' => \App\Http\Middleware\ProtectConfirmedPunchInLogFromEditing::class
+        'ProtectConfirmedPunchInLogAgainstEditing' => \App\Http\Middleware\ProtectConfirmedPunchInLogAgainstEditing::class,
+        'check-role' => \App\Http\Middleware\RestrictRouteByUserRole::class,
     ];
 
     /**

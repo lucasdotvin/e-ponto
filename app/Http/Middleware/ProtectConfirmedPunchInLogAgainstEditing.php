@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\PunchInLog;
 use Closure;
 
-class ProtectConfirmedPunchInLogFromEditing
+class ProtectConfirmedPunchInLogAgainstEditing
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class ProtectConfirmedPunchInLogFromEditing
         $punchInLog = PunchInLog::findByUuid($punchInLogUuid);
 
         if ($punchInLog->confirmed_by) {
-            return redirect(route('punch-in-logs.show', $punchInLog));
+            return redirect(route('dashboard'));
         }
 
         return $next($request);
