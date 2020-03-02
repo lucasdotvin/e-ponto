@@ -111,7 +111,13 @@
                         <div class="level-right">
                             <div class="control">
                                 <button class="button is-primary" type="submit">
-                                    Confirmar
+                                    <span class="icon">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </span>
+
+                                    <span>
+                                        Confirmar
+                                    </span>
                                 </button>
                             </div>
                         </div>

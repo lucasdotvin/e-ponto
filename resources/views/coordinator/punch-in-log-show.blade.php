@@ -59,8 +59,16 @@
 
                 <div class="level-right">
                     @unless ($punchInLog->confirmed_by)
-                        <a class="button is-primary" href="{{ route('coordinator.punch-in-logs.edit', $punchInLog) }}">
-                            Confirmar
+                        <a
+                            class="button is-primary"
+                            href="{{ route('coordinator.punch-in-logs.edit', $punchInLog) }}">
+                            <span class="icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </span>
+
+                            <span>
+                                Confirmar
+                            </span>
                         </a>
                     @endif
                 </div>

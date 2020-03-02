@@ -20,7 +20,13 @@
             class="button is-fullwidth is-primary is-outlined"
             href="{{ route('student.punch-in-logs.create') }}"
         >
-            Registrar Novo
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+
+            <span>
+                Registrar Novo
+            </span>
         </a>
     </div>
 
