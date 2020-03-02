@@ -91,15 +91,37 @@
                     @enderror
                 </div>
 
-                @if($errors->any())
-                    {{ dd($errors) }}
-                @endif
+                <div class="level is-mobile">
+                    <div class="level-left">
+                        <div class="field">
+                            <div class="control">
+                                <a class="button" href="{{ route('student.punch-in-logs.index') }}">
+                                    <span class="icon">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </span>
 
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-fullwidth is-outlined is-primary" type="submit">
-                            Registrar
-                        </button>
+                                    <span>
+                                        Voltar
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="level-right">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+
+                                    <span>
+                                        Registrar
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -91,11 +91,39 @@
                     @enderror
                 </div>
 
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-fullwidth is-outlined is-primary" type="submit">
-                            Salvar
-                        </button>
+                <div class="level">
+                    <div class="level-left">
+                        <a
+                            class="button"
+                            href="{{ route('student.punch-in-logs.show', $punchInLog) }}"
+                        >
+                            <span class="icon">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+
+                            <span>
+                                Voltar
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="level-right">
+                        <div class="field">
+                            <div class="control">
+                                <button
+                                    class="button is-primary"
+                                    type="submit"
+                                >
+                                    <span class="icon">
+                                        <i class="fas fa-save"></i>
+                                    </span>
+
+                                    <span>
+                                        Salvar
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
