@@ -12,12 +12,12 @@ class StudentProfileController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $uuid
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $uuid)
+    public function __invoke(Request $request, $username)
     {
-        $student = User::findByUuid($uuid);
+        $student = User::where('username', $username)->first();
         $workloadData = new \StudentWorkloadData($student);
         $workloadData = $workloadData->get();
         $punchInLogs = $student->punchInLogs()->take(5)->get();

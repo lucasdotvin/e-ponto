@@ -13,12 +13,12 @@ class PunchInLogController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  string  $studentUuid
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function index($studentUuid)
+    public function index($username)
     {
-        $student = User::findByUuid($studentUuid);
+        $student = User::where('username', $username)->first();
         return view('coordinator.punch-in-log-index', [
             'punchInLogs' => $student->punchInLogs,
             'student' => $student

@@ -28,7 +28,10 @@
             </main>
 
             <footer>
-                <a class="button" href="{{ route('coordinator.students.punch-in-logs.index', $student) }}">
+                <a
+                    class="button"
+                    href="{{ route('coordinator.students.punch-in-logs.index', $student->username) }}"
+                >
                     <span class="icon">
                         <i class="fas fa-list"></i>
                     </span>

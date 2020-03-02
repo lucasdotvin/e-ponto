@@ -37,8 +37,10 @@
 
                             <br>
 
-                            <a href="{{ route('coordinator.student-profile', $student) }}">
-                                Visualizar dados
+                            <a
+                                href="{{ route('coordinator.student-profile', $student->username) }}"
+                            >
+                                Visualizar Dados
                             </a>
                         </div>
                     </main>

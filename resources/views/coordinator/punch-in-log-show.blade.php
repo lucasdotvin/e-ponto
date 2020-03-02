@@ -43,7 +43,10 @@
         <footer>
             <div class="level is-mobile">
                 <div class="level-left">
-                    <a class="button" href="{{ route('coordinator.students.punch-in-logs.index', $punchInLog->user) }}">
+                    <a
+                        class="button"
+                        href="{{ route('coordinator.students.punch-in-logs.index', $punchInLog->user->username) }}"
+                    >
                         <span class="icon">
                             <i class="fas fa-arrow-left"></i>
                         </span>

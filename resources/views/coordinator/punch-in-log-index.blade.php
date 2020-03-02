@@ -12,7 +12,10 @@
         @endcomponent
 
         <div class="buttons">
-            <a class="button" href="{{ route('coordinator.student-profile', $student) }}">
+            <a
+                class="button"
+                href="{{ route('coordinator.student-profile', $student->username) }}"
+            >
                 <span class="icon">
                     <i class="fas fa-arrow-left"></i>
                 </span>
