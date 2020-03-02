@@ -7,7 +7,6 @@ use App\Http\Requests\StorePunchInLog;
 use App\PunchInLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PunchInLogController extends Controller
 {

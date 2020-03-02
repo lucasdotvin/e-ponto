@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\Helpers\BusinessDays;
-use App\PunchInLog;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
