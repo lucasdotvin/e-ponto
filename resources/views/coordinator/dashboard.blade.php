@@ -32,7 +32,7 @@
                             </strong>
 
                             <small>
-                                {{ print('@' . $student->username) }}
+                                {{ '@' . $student->username }}
                             </small>
 
                             <br>
