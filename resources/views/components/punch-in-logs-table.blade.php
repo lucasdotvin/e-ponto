@@ -33,7 +33,7 @@
                         <td class="has-text-centered">
                             <span class="icon">
                                 @if ($log->confirmed_by)
-                                    <i class="fas fa-check has-text-primary"></i>
+                                    <i class="fas fa-clipboard-check has-text-success"></i>
                                 @else
                                     <i class="fas fa-ban has-text-danger"></i>
                                 @endif
