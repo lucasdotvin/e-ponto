@@ -76,4 +76,24 @@ Route::group(['middleware' => ['auth']], function () {
                 ->only(['edit', 'update'])
                 ->middleware('ProtectConfirmedPunchInLogAgainstEditing');
         });
+
+    Route::middleware(['check-role:administrator'])
+        ->name('administrator.')
+        ->namespace('Administrator')
+        ->prefix('administrator')
+        ->group(function () {
+            Route::get('/', 'DashboardController')
+                ->name('dashboard');
+
+            Route::resource('students', 'StudentController');
+            Route::resource('students.punch-in-logs', 'PunchInLogController')
+                ->only(['index']);
+
+            Route::resource('punch-in-logs', 'PunchInLogController')
+                ->only(['show']);
+
+            Route::resource('departments', 'DepartmentController');
+            Route::get('departments/{uuid}/delete', 'DepartmentController@delete')
+                ->name('departments.delete');
+        });
 });
