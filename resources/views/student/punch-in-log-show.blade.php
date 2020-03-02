@@ -52,27 +52,72 @@
             </p>
         </main>
 
-        @unless ($punchInLog->confirmed_by)
-            <footer>
-                <div class="field is-grouped is-grouped-right">
+        <div class="level">
+            <div class="level-left">
+                <div class="field">
                     <div class="control">
-                        <a class="button" href="{{ route('student.punch-in-logs.edit', $punchInLog) }}">
-                            Editar
+                        <a
+                            class="button is-fullwidth"
+                            href="{{ route('student.punch-in-logs.index') }}"
+                        >
+                            <span class="icon">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+
+                            <span>
+                                Voltar
+                            </span>
                         </a>
                     </div>
-
-                    <div class="control">
-                        <form method="POST">
-                            @method('DELETE')
-                            @csrf
-
-                            <button class="button is-danger is-outlined" type="submit">
-                                Remover
-                            </button>
-                        </form>
-                    </div>
                 </div>
-            </footer>
-        @endif
+            </div>
+
+            <div class="level-right">
+                @unless ($punchInLog->confirmed_by)
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <a
+                                        class="button is-fullwidth"
+                                        href="{{ route('student.punch-in-logs.edit', $punchInLog) }}"
+                                    >
+                                        <span class="icon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+
+                                        <span>
+                                            Editar
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <form method="POST">
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <button
+                                            class="button is-fullwidth is-danger is-outlined"
+                                            type="submit"
+                                        >
+                                            <span class="icon">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+
+                                            <span>
+                                                Remover
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 @endsection
