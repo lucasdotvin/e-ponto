@@ -95,5 +95,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('departments', 'DepartmentController');
             Route::get('departments/{uuid}/delete', 'DepartmentController@delete')
                 ->name('departments.delete');
+
+            Route::resource('reports', 'ReportController')
+                ->except(['edit', 'update']);
         });
 });
