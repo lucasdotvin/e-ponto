@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('\App\Services\StudentWorkloadDataService', function($app) {
             return new \App\Services\StudentWorkloadDataService();
         });
+
+        $this->app->bind('\App\Services\ReportDataGeneratorService', function($app) {
+            return new \App\Services\ReportDataGeneratorService();
+        });
     }
 
     /**
