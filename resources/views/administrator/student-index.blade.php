@@ -29,7 +29,10 @@
         </span>
     </a>
 
-    <a class="navbar-item">
+    <a
+        class="navbar-item"
+        href="{{ route('administrator.reports.index') }}"
+    >
         <span class="icon">
             <i class="fas fa-clipboard-list"></i>
         </span>
