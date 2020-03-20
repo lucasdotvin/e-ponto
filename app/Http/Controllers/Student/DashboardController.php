@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,13 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $workloadData = new \StudentWorkloadData(Auth::user());
-        $workloadData = $workloadData->get();
+        $workloadDataHandler = new \StudentWorkloadData(
+            Auth::user(),
+            Carbon::now()
+        );
+
+        $workloadData = $workloadDataHandler->getFullWorkloadData();
+
         return view('student.dashboard', [
             'workloadData' => $workloadData
         ]);

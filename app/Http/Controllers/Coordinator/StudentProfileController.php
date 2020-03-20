@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentProfileController extends Controller
@@ -18,9 +19,14 @@ class StudentProfileController extends Controller
     public function __invoke(Request $request, $username)
     {
         $student = User::where('username', $username)->first();
-        $workloadData = new \StudentWorkloadData($student);
-        $workloadData = $workloadData->get();
+        $workloadDataHandler = new \StudentWorkloadData(
+            $student,
+            Carbon::now()
+        );
+
+        $workloadData = $workloadDataHandler->getFullWorkloadData();
         $punchInLogs = $student->punchInLogs()->take(5)->get();
+
         return view('coordinator.student-profile', [
             'punchInLogs' => $punchInLogs,
             'student' => $student,

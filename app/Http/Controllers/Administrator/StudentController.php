@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Department;
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -68,9 +69,15 @@ class StudentController extends Controller
         $student = User::where('username', $username)
             ->first();
 
-        $workloadData = new \StudentWorkloadData($student);
-        $workloadData = $workloadData->get();
+        $student = User::where('username', $username)->first();
+        $workloadDataHandler = new \StudentWorkloadData(
+            $student,
+            Carbon::now()
+        );
+
+        $workloadData = $workloadDataHandler->getFullWorkloadData();
         $punchInLogs = $student->punchInLogs()->take(5)->get();
+
         return view('administrator.student-show', [
             'punchInLogs' => $punchInLogs,
             'student' => $student,
