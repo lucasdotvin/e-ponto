@@ -75,6 +75,12 @@
                     </div>
                 </div>
 
+                <div class="message is-danger">
+                    <p class="message-body">
+                        Essa ação não poderá ser desfeita.
+                    </p>
+                </div>
+
                 <div class="level is-mobile">
                     <div class="level-left">
                         <div class="field">
