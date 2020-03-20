@@ -228,7 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'BusinessDays' => App\Helpers\BusinessDays::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
         'StudentWorkloadData' => App\Services\StudentWorkloadDataService::class,
         'SUAPClient' => App\Services\SUAPClientService::class,
     ],
