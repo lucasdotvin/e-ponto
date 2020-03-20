@@ -9,22 +9,24 @@ use Carbon\Carbon;
 
 class StudentWorkloadDataService
 {
-    function __construct(User $student)
+    function __construct(User $student, Carbon $targetDate)
     {
         $this->student = $student;
+        $this->targetDate = $targetDate;
     }
 
-    private function countBusinessDays(Carbon $currentDate)
+    private function countBusinessDays()
     {
-        $currentDate = Carbon::now();
-        $daysOff = DayOff::whereYear('day_off', $currentDate->year)
-            ->whereMonth('day_off', $currentDate->month)
+        $targetYear = $this->targetDate->year;
+        $targetMonth = $this->targetDate->month;
+        $daysOff = DayOff::whereYear('day_off', $targetYear)
+            ->whereMonth('day_off', $targetMonth)
             ->get();
 
         $businessDays = 0;
-        $daysInMonth = $currentDate->daysInMonth;
+        $daysInMonth = $this->targetDate->daysInMonth;
         for ($dayNumber=1; $dayNumber <= $daysInMonth; $dayNumber++) {
-            $day = $currentDate->setDay($dayNumber);
+            $day = $this->targetDate->setDay($dayNumber);
             $formattedDay = $day->format('Y-m-d');
 
             if ($day->isWeekend()) {
@@ -39,22 +41,32 @@ class StudentWorkloadDataService
         return $businessDays;
     }
 
-    public function get()
-    {
-        $currentDate = Carbon::now();
-        $businessDays = $this->countBusinessDays($currentDate);
-
-        $dailyWorkload = config('workload.daily_workload');
-        $totalWorkload = $businessDays * $dailyWorkload;
-
+    public function getCompleteWorkload() {
         $studentId = $this->student->id;
+        $targetYear = $this->targetDate->year;
+        $targetMonth = $this->targetDate->month;
         $completeWorkload = PunchInLog::where('worker_id', $studentId)
-            ->whereYear('work_day', $currentDate->year)
-            ->whereMonth('work_day', $currentDate->month)
+            ->whereYear('work_day', $targetYear)
+            ->whereMonth('work_day', $targetMonth)
             ->whereNotNull('confirmed_by')
             ->sum('work_total_time');
 
         $completeWorkload /= 60;
+        return $completeWorkload;
+    }
+
+    public function getMonthTotalWorkload() {
+        $businessDays = $this->countBusinessDays();
+
+        $dailyWorkload = config('workload.daily_workload');
+        $totalWorkload = $businessDays * $dailyWorkload;
+        return $totalWorkload;
+    }
+
+    public function getFullWorkloadData()
+    {
+        $totalWorkload = $this->getMonthTotalWorkload();
+        $completeWorkload = $this->getCompleteWorkload();
 
         return [
             'totalWorkload' => $totalWorkload,
