@@ -232,6 +232,7 @@ return [
 
         'StudentWorkloadData' => App\Services\StudentWorkloadDataService::class,
         'SUAPClient' => App\Services\SUAPClientService::class,
+        'ReportDataGenerator' => App\Services\ReportDataGeneratorService::class,
     ],
 
 ];
