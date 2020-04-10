@@ -17,14 +17,16 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $student = auth()->user();
         $workloadDataHandler = new \StudentWorkloadData(
-            Auth::user(),
+            $student,
             Carbon::now()
         );
 
         $workloadData = $workloadDataHandler->getFullWorkloadData();
 
         return view('student.dashboard', [
+            'student' => $student,
             'workloadData' => $workloadData
         ]);
     }
