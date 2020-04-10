@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\AcademicSystemClientServiceProvider::class,
+        App\Providers\RoleServiceProvider::class,
     ],
 
     /*
@@ -233,6 +234,7 @@ return [
         'StudentWorkloadData' => App\Services\StudentWorkloadDataService::class,
         'SUAPClient' => App\Services\SUAPClientService::class,
         'ReportDataGenerator' => App\Services\ReportDataGeneratorService::class,
+        'Role' => App\Facades\RoleFacade::class,
     ],
 
 ];
