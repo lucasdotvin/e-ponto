@@ -11,96 +11,49 @@
         <section class="box">
             <h3 class="title is-6">Integrantes</h3>
 
-            @if($participants->isEmpty())
-                <div class="has-text-centered">
-                    <p class="is-italic">
-                        Nenhum integrante encontrado.
-                    </p>
-                </div>
-            @endif
-
-            @foreach($participants as $participant)
-                <article class="media">
-                    <section class="media-left">
-                        <span class="icon has-background-grey-lighter is-large">
-                            <i class="fas fa-user has-text-grey-light"></i>
-                        </span>
-                    </section>
-
-                    <main class="media-content">
-                        <div class="content">
-                            <strong>
-                                {{ $participant->name }}
-                            </strong>
-
-                            <span class="tag">
-                                {{ $participant->role->name }}
-                            </span>
-                        </div>
-                    </main>
-                </article>
-            @endforeach
+            @include('partials.lists.department-participants')
         </section>
 
-        <div class="level">
-            <div class="level-left">
-                <div class="field">
-                    <div class="control">
-                        <a
-                            class="button is-fullwidth"
-                            href="{{ route('administrator.departments.index') }}"
-                        >
-                            <span class="icon">
-                                <i class="fas fa-arrow-left"></i>
-                            </span>
+        @if(auth()->user()->role->slug === 'administrator')
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <div class="field">
+                        <div class="control">
+                            <a
+                                class="button is-fullwidth"
+                                href="{{ route('administrator.departments.edit', $department) }}"
+                            >
+                                <span class="icon">
+                                    <i class="fas fa-pen"></i>
+                                </span>
 
-                            <span>
-                                Voltar
-                            </span>
-                        </a>
+                                <span>
+                                    Editar
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="level-right">
-                <div class="field is-horizontal">
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <a
-                                    class="button is-fullwidth"
-                                    href="{{ route('administrator.departments.edit', $department) }}"
-                                >
-                                    <span class="icon">
-                                        <i class="fas fa-pen"></i>
-                                    </span>
+                <div class="control">
+                    <div class="field">
+                        <div class="control">
+                            <a
+                                class="button is-fullwidth is-danger is-outlined"
+                                href="{{ route('administrator.departments.delete', $department) }}"
+                            >
+                                <span class="icon">
+                                    <i class="fas fa-trash"></i>
+                                </span>
 
-                                    <span>
-                                        Editar
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="control">
-                                <a
-                                    class="button is-fullwidth is-danger is-outlined"
-                                    href="{{ route('administrator.departments.delete', $department) }}"
-                                >
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
-
-                                    <span>
-                                        Remover
-                                    </span>
-                                </a>
-                            </div>
+                                <span>
+                                    Remover
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection

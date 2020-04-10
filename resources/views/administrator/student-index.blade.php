@@ -82,49 +82,7 @@
 
     <div class="box">
         <main class="content">
-            @if($students->isEmpty())
-                <div class="has-text-centered">
-                    <p class="is-italic">
-                        Nenhum estudante encontrado.
-                    </p>
-                </div>
-            @endif
-
-            @foreach($students as $student)
-                <article class="media">
-                    <section class="media-left">
-                        <span class="icon has-background-grey-lighter is-large">
-                            <i class="fas fa-user has-text-grey-light"></i>
-                        </span>
-                    </section>
-
-                    <main class="media-content">
-                        <div class="content">
-                            <strong>
-                                {{ $student->name }}
-                            </strong>
-
-                            @if($student->department)
-                                <span class="tag">
-                                    {{ $student->department->name }}
-                                </span>
-                            @endif
-
-                            <small>
-                                {{ '@' . $student->username }}
-                            </small>
-
-                            <br>
-
-                            <a
-                                href="{{ route('administrator.students.show', $student->username) }}"
-                            >
-                                Visualizar Dados
-                            </a>
-                        </div>
-                    </main>
-                </article>
-            @endforeach
+            @include('partials.lists.students')
         </main>
     </div>
 @endsection

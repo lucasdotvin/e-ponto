@@ -20,39 +20,7 @@
 
     <div class="box">
         <main class="content">
-            @if($reports->isEmpty())
-                <div class="has-text-centered">
-                    <p class="is-italic">
-                        Nenhum relatório encontrado.
-                    </p>
-                </div>
-            @endif
-
-            @foreach($reports as $report)
-                <article class="media">
-                    <section class="media-left">
-                        <span class="icon has-background-grey-lighter is-large">
-                            <i class="fas fa-building has-text-grey-light"></i>
-                        </span>
-                    </section>
-
-                    <main class="media-content">
-                        <div class="content">
-                            <strong>
-                                {{ $report->name }}
-                            </strong>
-
-                            <br>
-
-                            <a
-                                href="{{ route('administrator.reports.show', $report->uuid) }}"
-                            >
-                                Visualizar Dados
-                            </a>
-                        </div>
-                    </main>
-                </article>
-            @endforeach
+            @include('partials.lists.reports')
         </main>
     </div>
 @endsection

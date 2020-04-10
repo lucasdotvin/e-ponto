@@ -1,51 +1,63 @@
 @extends('layouts.content-with-navbar')
 
-@section('title', 'Dashboard')
+@section('title')
+    {{ $department->name }}
+@endsection
+
+@php
+    $userRole = auth()->user()->role->slug;
+@endphp
 
 @section('main-content')
     <div class="box">
-        <h2 class="title is-5">
-            Bolsistas
-        </h2>
+        <h2 class="title is-5">{{ $department->name }}</h2>
 
-        <main class="content">
-            @if($departmentStudents->isEmpty())
-                <div class="has-text-centered">
-                    <p class="is-italic">
-                        Ainda não há bolsistas cadastrados.
-                    </p>
-                </div>
-            @endif
+        <section class="box">
+            <h3 class="title is-6">Integrantes</h3>
 
-            @foreach($departmentStudents as $student)
-                <article class="media">
-                    <section class="media-left">
-                        <span class="icon has-background-grey-lighter is-large">
-                            <i class="fas fa-user has-text-grey-light"></i>
-                        </span>
-                    </section>
+            @include('partials.lists.department-participants')
+        </section>
 
-                    <main class="media-content">
-                        <div class="content">
-                            <strong>
-                                {{ $student->name }}
-                            </strong>
-
-                            <small>
-                                {{ '@' . $student->username }}
-                            </small>
-
-                            <br>
-
+        @if($userRole === 'administrator')
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <div class="field">
+                        <div class="control">
                             <a
-                                href="{{ route('coordinator.student-profile', $student->username) }}"
+                                class="button is-fullwidth"
+                                href="{{ route('administrator.departments.edit', $department) }}"
                             >
-                                Visualizar Dados
+                                <span class="icon">
+                                    <i class="fas fa-pen"></i>
+                                </span>
+
+                                <span>
+                                    Editar
+                                </span>
                             </a>
                         </div>
-                    </main>
-                </article>
-            @endforeach
-        </main>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="field">
+                        <div class="control">
+                            <a
+                                class="button is-fullwidth is-danger is-outlined"
+                                href="{{ route('administrator.departments.delete', $department) }}"
+                            >
+                                <span class="icon">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+
+                                <span>
+                                    Remover
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

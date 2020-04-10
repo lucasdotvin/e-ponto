@@ -22,39 +22,7 @@
 
     <div class="box">
         <main class="content">
-            @if($departments->isEmpty())
-                <div class="has-text-centered">
-                    <p class="is-italic">
-                        Nenhum departamento encontrado.
-                    </p>
-                </div>
-            @endif
-
-            @foreach($departments as $department)
-                <article class="media">
-                    <section class="media-left">
-                        <span class="icon has-background-grey-lighter is-large">
-                            <i class="fas fa-building has-text-grey-light"></i>
-                        </span>
-                    </section>
-
-                    <main class="media-content">
-                        <div class="content">
-                            <strong>
-                                {{ $department->name }}
-                            </strong>
-
-                            <br>
-
-                            <a
-                                href="{{ route('administrator.departments.show', $department->uuid) }}"
-                            >
-                                Visualizar Dados
-                            </a>
-                        </div>
-                    </main>
-                </article>
-            @endforeach
+            @include('partials.lists.departments')
         </main>
     </div>
 @endsection
