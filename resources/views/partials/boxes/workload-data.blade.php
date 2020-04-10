@@ -1,3 +1,16 @@
+@php
+    $totalWorkload = $workloadData['totalWorkload'];
+    $completeWorkload = $workloadData['completeWorkload'];
+
+    $completeWorkloadPercent = ($completeWorkload / $totalWorkload) * 100;
+    $formattedCompleteWorkloadPercent = number_format(
+        $completeWorkloadPercent,
+        2
+    );
+
+    $formattedCompleteWorkload = number_format($completeWorkload, 2);
+@endphp
+
 <section class="box">
     <h2 class="title is-5">
         Cumprimento de Carga Horária
@@ -11,13 +24,13 @@
                     max="{{ $totalWorkload }}"
                     value="{{ $completeWorkload }}"
                 >
-                    {{ number_format(($completeWorkload / $totalWorkload) * 100, 2) }}
+                    {{ $formattedCompleteWorkloadPercent }}
                 </progress>
             </div>
 
             <div class="control">
                 <span class="tag">
-                    {{ number_format(($completeWorkload / $totalWorkload) * 100, 2) }}%
+                    {{ $formattedCompleteWorkloadPercent }}%
                 </span>
             </div>
         </div>
@@ -41,7 +54,7 @@
                         <p>
                             Carga Horária Cumprida e Confirmada:
 
-                            <strong>{{ number_format($completeWorkload, 2) }}h</strong>.
+                            <strong>{{ $formattedCompleteWorkload }}h</strong>.
                         </p>
                     </div>
                 </details>
