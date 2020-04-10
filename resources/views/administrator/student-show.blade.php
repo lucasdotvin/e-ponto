@@ -1,7 +1,7 @@
 @extends('layouts.content-with-navbar')
 
 @section('title')
-    Perfil de {{ $student->name }}
+    Ficha de {{ $student->name }}
 @endsection
 
 @section('main-content')
@@ -20,10 +20,7 @@
             </div>
         @endif
 
-        @component('components.student-workload-data')
-            @slot('totalWorkload', $workloadData['totalWorkload'])
-            @slot('completeWorkload', $workloadData['completeWorkload'])
-        @endcomponent
+        @include('partials.boxes.workload-data')
 
         <section class="box">
             <h2 class="title is-5">

@@ -1,46 +1,33 @@
 @extends('layouts.content-with-navbar')
 
 @section('title')
-    Perfil de {{ $student->name }}
+    Ficha de {{ $student->name }}
 @endsection
+
+@php
+    $userRole = auth()->user()->role->slug;
+@endphp
 
 @section('main-content')
     <div class="box">
-        <h2 class="title is-5">
-            {{ $student->name }}
-        </h2>
+        <h2 class="title is-5">{{ $student->name }}</h2>
 
-        @component('components.student-workload-data')
-            @slot('totalWorkload', $workloadData['totalWorkload'])
-            @slot('completeWorkload', $workloadData['completeWorkload'])
-        @endcomponent
-
-        <section class="box">
-            <h2 class="title is-5">
-                Últimos Registros de Ponto
-            </h2>
-
-            <main class="content">
-                @component('components.punch-in-logs-table')
-                    @slot('punchInLogs', $punchInLogs)
-                    @slot('punchInLogShowRoute', 'coordinator.punch-in-logs.show')
-                @endcomponent
-            </main>
-
-            <footer>
-                <a
-                    class="button"
-                    href="{{ route('coordinator.students.punch-in-logs.index', $student->username) }}"
-                >
-                    <span class="icon">
-                        <i class="fas fa-list"></i>
+        @if($userRole === 'administrator')
+            @if($student->department)
+                <div class="tags has-addons">
+                    <span class="tag">
+                        Departamento
                     </span>
 
-                    <span>
-                        Visualizar Todos
+                    <span class="tag is-primary">
+                        {{ $student->department->name }}
                     </span>
-                </a>
-            </footer>
-        </section>
+                </div>
+            @endif
+        @endif
+
+        @include('partials.boxes.workload-data')
+
+        @includeUnless(($userRole === 'student'), 'partials.boxes.last-punch-in-logs')
     </div>
 @endsection
