@@ -17,12 +17,10 @@ class PunchInLogController extends Controller
      */
     public function index()
     {
-        $punchInLogs = PunchInLog::where('worker_id', Auth::user()->id)
-            ->get();
+        $student = Auth::user()
+            ->with('punchInLogs')
+            ->first();
 
-        return view('student.punch-in-log-index', [
-            'punchInLogs' => $punchInLogs
-        ]);
     }
 
     /**

@@ -15,12 +15,10 @@ class DashboardController extends Controller
      */
     public function __invoke()
     {
-        $userDepartment = Auth::user()->department;
-        $departmentStudents = Department::where('id', $userDepartment->id)
-            ->first()
-            ->users()
-            ->where('role_id', 2)
-            ->get();
+        $userDepartmentId = Auth::user()->department_id;
+        $department = Department::where('id', $userDepartmentId)
+            ->with('users')
+            ->first();
 
         return view('coordinator.dashboard', [
             'departmentStudents' => $departmentStudents

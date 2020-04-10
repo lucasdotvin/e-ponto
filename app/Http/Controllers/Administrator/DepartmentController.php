@@ -58,10 +58,8 @@ class DepartmentController extends Controller
      */
     public function show($uuid)
     {
-        $department = Department::findByUuid($uuid);
-        $participants = User::where('department_id', $department->id)
-            ->orderBy('role_id', 'DESC')
-            ->get();
+        $department = Department::findByUuid($uuid)
+            ->with('users');
 
         return view('administrator.department-show', [
             'department' => $department,
