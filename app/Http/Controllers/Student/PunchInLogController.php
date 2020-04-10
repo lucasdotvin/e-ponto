@@ -44,12 +44,8 @@ class PunchInLogController extends Controller
     {
         $validatedData = $request->validated();
 
-        $punchInLog = new PunchInLog();
+        $punchInLog = new PunchInLog($validatedData);
         $punchInLog->worker_id = Auth::user()->id;
-        $punchInLog->work_day = $validatedData['work-day'];
-        $punchInLog->work_start_time = $validatedData['work-start-time'];
-        $punchInLog->work_end_time = $validatedData['work-end-time'];
-        $punchInLog->work_total_time = $validatedData['work-total-time'];
         $punchInLog->save();
 
         return redirect(route('student.punch-in-logs.index'));
@@ -96,12 +92,8 @@ class PunchInLogController extends Controller
     {
         $validatedData = $request->validated();
 
-        $punchInLog = PunchInLog::findByUuid($uuid);
-        $punchInLog->work_day = $validatedData['work-day'];
-        $punchInLog->work_start_time = $validatedData['work-start-time'];
-        $punchInLog->work_end_time = $validatedData['work-end-time'];
-        $punchInLog->work_total_time = $validatedData['work-total-time'];
-        $punchInLog->save();
+        $punchInLog = PunchInLog::findByUuid($uuid)
+            ->update($validatedData);
 
         return redirect(route('student.punch-in-logs.show', $uuid));
     }
