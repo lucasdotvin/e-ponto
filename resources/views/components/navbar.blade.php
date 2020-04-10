@@ -18,7 +18,15 @@
 
         <div class="navbar-menu" data-role="navbar-menu">
             <div class="navbar-start">
-                @yield('navbar-start-items')
+                @switch(auth()->user()->role->slug)
+                    @case('administrator')
+                        @include('partials.navbar-items.administrator')
+                        @break
+
+                    @case('student')
+                        @include('partials.navbar-items.student')
+                        @break
+                @endswitch
             </div>
 
             <div class="navbar-end">
