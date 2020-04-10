@@ -1,13 +1,13 @@
 @extends('layouts.content-with-navbar')
 
 @section('title')
-    Registrar Novo Departamento
+    Atualizar Departamento
 @endsection
 
 @section('main-content')
     <div class="box">
         <h3 class="title is-5">
-            Registrar Departamento
+            Atualizar Departamento
         </h3>
 
         <main>
