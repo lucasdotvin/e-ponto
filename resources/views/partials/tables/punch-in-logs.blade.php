@@ -1,10 +1,13 @@
-@if($punchInLogs->isEmpty())
-    <div class="content has-text-centered">
-        <p class="is-italic">
-            Não há registros de ponto.
-        </p>
-    </div>
+@if($student->punchInLogs->isEmpty())
+    @component('components.message')
+        @slot('type', 'warning')
+        @slot('message', 'Nenhum registro encontrado.')
+    @endcomponent
 @else
+    @php
+        $userRole = auth()->user()->role->slug;
+    @endphp
+
     <div class="table-container">
         <table class="table is-bordered is-narrow is-hoverable is-fullwidth">
             <thead>
@@ -28,7 +31,20 @@
             </thead>
 
             <tbody>
-                @foreach ($punchInLogs as $log)
+                @foreach ($student->punchInLogs as $log)
+                    @php
+                        $punchInLogShowRouteName = $userRole . '.punch-in-logs.show';
+                        $punchInLogShowRoute = route(
+                            $punchInLogShowRouteName,
+                            $log
+                        );
+
+                        $formattedWorkDayDate = date(
+                            'd\/m\/Y',
+                            strtotime($log->work_day)
+                        );
+                    @endphp
+
                     <tr>
                         <td class="has-text-centered">
                             <span class="icon">
@@ -41,7 +57,7 @@
                         </td>
 
                         <td>
-                            {{ date('d\/m\/Y', strtotime($log->work_day)) }}
+                            {{ $formattedWorkDayDate }}
                         </td>
 
                         <td>
@@ -49,7 +65,7 @@
                                 <div class="control has-text-centered">
                                     <a
                                         class="button is-small"
-                                        href="{{ route($punchInLogShowRoute, $log) }}"
+                                        href="{{ $punchInLogShowRoute }}"
                                         title="Visualizar"
                                     >
                                         <span class="icon">
