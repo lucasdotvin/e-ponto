@@ -61,10 +61,7 @@ class DepartmentController extends Controller
         $department = Department::findByUuid($uuid)
             ->with('users');
 
-        return view('administrator.department-show', [
-            'department' => $department,
-            'participants' => $participants
-        ]);
+        return view('administrator.department-show', compact('department'));
     }
 
     /**

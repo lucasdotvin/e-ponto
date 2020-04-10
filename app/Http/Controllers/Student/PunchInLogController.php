@@ -21,6 +21,7 @@ class PunchInLogController extends Controller
             ->with('punchInLogs')
             ->first();
 
+        return view('student.punch-in-log-index', compact('student'));
     }
 
     /**
