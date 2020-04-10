@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePunchInLog;
+use App\Http\Requests\ConfirmPunchInLog;
 use App\PunchInLog;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -58,11 +58,11 @@ class PunchInLogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  StorePunchInLog  $request
+     * @param  ConfirmPunchInLog  $request
      * @param  string  $uuid
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePunchInLog $request, $uuid)
+    public function update(ConfirmPunchInLog $request, $uuid)
     {
         $validatedData = $request->validated();
         if ($validatedData['coordinator-confirmation'] ?? false) {
