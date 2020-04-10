@@ -1,16 +1,15 @@
 @extends('layouts.content-with-navbar')
 
-@section('title', 'Visualizar Registro de Ponto')
+@section('title', 'Ponto')
 
+@php
+    $userRole = auth()->user()->role->slug;
+@endphp
 
 @section('main-content')
     <div class="box">
-        <h3 class="subtitle is-7">
-            Registro de Ponto
-        </h3>
-
         <h2 class="title is-5">
-            {{ date('d\/m\/Y', strtotime($punchInLog->work_day)) }}
+            Registro de Ponto
 
             @if ($punchInLog->confirmed_by)
                 <span class="tag is-success">
@@ -24,47 +23,12 @@
         </h2>
 
         <main class="content">
-            <strong>
-                Horário de Chegada
-            </strong>
+            @include('partials.forms.punch-in-logs.show')
 
-            <p>
-                {{ date('H\:i', strtotime($punchInLog->work_start_time)) }}
-            </p>
-
-            <strong>
-                Horário de Saída
-            </strong>
-
-            <p>
-                {{ date('H\:i', strtotime($punchInLog->work_end_time)) }}
-            </p>
-        </main>
-
-        <div class="level">
-            <div class="level-left">
-                <div class="field">
-                    <div class="control">
-                        <a
-                            class="button is-fullwidth"
-                            href="{{ route('student.punch-in-logs.index') }}"
-                        >
-                            <span class="icon">
-                                <i class="fas fa-arrow-left"></i>
-                            </span>
-
-                            <span>
-                                Voltar
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="level-right">
+            @if($userRole === 'student')
                 @unless ($punchInLog->confirmed_by)
-                    <div class="field is-horizontal">
-                        <div class="field-body">
+                    <div class="field is-grouped is-grouped-right">
+                        <div class="control">
                             <div class="field">
                                 <div class="control">
                                     <a
@@ -81,7 +45,9 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
 
+                        <div class="contr">
                             <div class="field">
                                 <div class="control">
                                     <form method="POST">
@@ -106,7 +72,8 @@
                         </div>
                     </div>
                 @endif
-            </div>
-        </div>
+            @endif
+        </main>
     </div>
 @endsection
+
