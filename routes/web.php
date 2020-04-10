@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
                 ->name('dashboard');
 
             Route::get('students/{uuid}/', 'StudentProfileController')
-                ->name('student-profile');
+                ->name('students.show');
 
             Route::resource('students.punch-in-logs', 'PunchInLogController')
                 ->only(['index']);
