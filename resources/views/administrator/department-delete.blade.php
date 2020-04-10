@@ -18,65 +18,27 @@
                 @method('DELETE')
                 @csrf
 
-                <div class="field">
-                    <label class="label" for="name-field">
-                        Nome
-                    </label>
-
-                    <div class="control">
-                        <input
-                            class="input"
-                            id="name-field"
-                            type="text"
-                            value="{{ $department->name }}"
-                            readonly
-                        >
-                    </div>
-                </div>
-
-                <div class="message is-danger">
-                    <p class="message-body">
+                @component('components.message')
+                    @slot('type', 'danger')
+                    @slot('message')
                         Essa ação não poderá ser desfeita.
-                    </p>
-                </div>
+                    @endslot
+                @endcomponent
 
-                <div class="level is-mobile">
-                    <div class="level-left">
-                        <div class="field">
-                            <div class="control">
-                                <a
-                                    class="button"
-                                    href="{{ route('administrator.departments.show', $department) }}"
-                                >
-                                    <span class="icon">
-                                        <i class="fas fa-arrow-left"></i>
-                                    </span>
+                <div class="field">
+                    <div class="control has-text-right">
+                        <button
+                            class="button is-danger"
+                            type="submit"
+                        >
+                            <span class="icon">
+                                <i class="fas fa-trash"></i>
+                            </span>
 
-                                    <span>
-                                        Voltar
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="level-right">
-                        <div class="field">
-                            <div class="control">
-                                <button
-                                    class="button is-danger is-outlined"
-                                    type="submit"
-                                >
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
-
-                                    <span>
-                                        Remover
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+                            <span>
+                                Remover
+                            </span>
+                        </button>
                     </div>
                 </div>
             </form>
