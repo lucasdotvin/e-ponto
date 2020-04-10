@@ -6,24 +6,8 @@
 
 @section('main-content')
     <section class="box">
-        @component('components.punch-in-logs-table')
-            @slot('punchInLogs', $punchInLogs)
-            @slot('punchInLogShowRoute', 'administrator.punch-in-logs.show')
-        @endcomponent
+        <h2 class="title is-5">Registros de Ponto</h2>
 
-        <div class="buttons">
-            <a
-                class="button"
-                href="{{ route('administrator.students.show', $student->username) }}"
-            >
-                <span class="icon">
-                    <i class="fas fa-arrow-left"></i>
-                </span>
-
-                <span>
-                    Voltar ao Perfil
-                </span>
-            </a>
-        </div>
+        @include('partials.tables.punch-in-logs')
     </section>
 @endsection

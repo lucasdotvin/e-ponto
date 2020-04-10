@@ -31,10 +31,7 @@
             </h2>
 
             <main class="content">
-                @component('components.punch-in-logs-table')
-                    @slot('punchInLogs', $punchInLogs)
-                    @slot('punchInLogShowRoute', 'administrator.punch-in-logs.show')
-                @endcomponent
+                @include('partials.tables.punch-in-logs')
             </main>
 
             @unless($punchInLogs->isEmpty())
