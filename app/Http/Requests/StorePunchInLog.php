@@ -15,26 +15,26 @@ class StorePunchInLog extends FormRequest
     public function rules()
     {
         return [
-            'work-day' => [
+            'work_day' => [
                 'required',
                 'before_or_equal:now',
                 'date'
             ],
 
-            'work-start-time' => [
+            'work_start_time' => [
                 'required',
                 'date',
                 'before:now'
             ],
 
-            'work-end-time' => [
+            'work_end_time' => [
                 'required',
                 'date',
-                'after:work-start-time',
+                'after:work_start_time',
                 'before_or_equal:now'
             ],
 
-            'work-total-time' => [
+            'work_total_time' => [
                 'required'
             ]
         ];
@@ -42,9 +42,9 @@ class StorePunchInLog extends FormRequest
 
     protected function prepareForValidation()
     {
-        $workDay = $this->input('work-day');
-        $workStartTime = $this->input('work-start-time');
-        $workEndTime = $this->input('work-end-time');
+        $workDay = $this->input('work_day');
+        $workStartTime = $this->input('work_start_time');
+        $workEndTime = $this->input('work_end_time');
 
         $workStartDateTime = $workDay . ' ' . $workStartTime;
         $workEndDateTime = $workDay . ' ' . $workEndTime;
@@ -55,9 +55,9 @@ class StorePunchInLog extends FormRequest
         );
 
         $this->merge([
-            'work-start-time' => $workStartDateTime,
-            'work-end-time' => $workEndDateTime,
-            'work-total-time' => $workTotalTime
+            'work_start_time' => $workStartDateTime,
+            'work_end_time' => $workEndDateTime,
+            'work_total_time' => $workTotalTime
         ]);
     }
 }
