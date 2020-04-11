@@ -2,6 +2,7 @@
 
 @push('html-element-classes')
     has-background-light
+    has-navbar-fixed-top
 @endpush
 
 @section('content')

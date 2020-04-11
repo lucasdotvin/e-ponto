@@ -1,26 +1,4 @@
-@isset($fixedPosition)
-    @php
-        $navbarElementFixedPositionClass = 'is-fixed-'.$fixedPosition;
-        $htmlElementFixedNavbarPositionClass = 'has-navbar-fixed-'.$fixedPosition;
-    @endphp
-
-    @push('html-element-classes')
-        {{ $htmlElementFixedNavbarPositionClass }}
-    @endpush
-
-    @push('navbar-element-classes')
-        {{ $navbarElementFixedPositionClass }}
-    @endpush
-@endisset
-
-@php
-    $navbarElementColorClass = 'is-'.$color;
-@endphp
-
-<nav
-    class="navbar {{ $navbarElementColorClass }} @stack('navbar-element-classes') ep-has-shadow"
-    data-role="navbar"
->
+<nav class="navbar is-fixed-top is-primary ep-has-shadow" data-role="navbar">
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ route('dashboard') }}">
@@ -40,7 +18,15 @@
 
         <div class="navbar-menu" data-role="navbar-menu">
             <div class="navbar-start">
-                @yield('navbar-start-items')
+                @switch(auth()->user()->role->slug)
+                    @case('administrator')
+                        @include('partials.navbar-items.administrator')
+                        @break
+
+                    @case('student')
+                        @include('partials.navbar-items.student')
+                        @break
+                @endswitch
             </div>
 
             <div class="navbar-end">
