@@ -28,6 +28,9 @@
 
         @include('partials.boxes.workload-data')
 
-        @includeUnless(($userRole === 'student'), 'partials.boxes.last-punch-in-logs')
+        @includeUnless(
+            ($userRole === 'student'),
+            'partials.boxes.last-punch-in-logs'
+        )
     </div>
 @endsection
