@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
         ->namespace('Guest')
         ->prefix('guest')
         ->group(function () {
-            Route::view('/', 'guest.dashboard')
+            Route::view('/', 'role-specific.guest.dashboard')
                 ->name('dashboard');
         });
 
