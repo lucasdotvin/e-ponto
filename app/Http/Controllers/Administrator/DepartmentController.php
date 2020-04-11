@@ -18,7 +18,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::orderBy('name')->get();
-        return view('administrator.department-index', [
+        return view('departments.index', [
             'departments' => $departments
         ]);
     }
@@ -30,7 +30,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('administrator.department-create');
+        return view('departments.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class DepartmentController extends Controller
         $department = Department::findByUuid($uuid)
             ->with('users');
 
-        return view('administrator.department-show', compact('department'));
+        return view('departments.show', compact('department'));
     }
 
     /**
@@ -73,7 +73,7 @@ class DepartmentController extends Controller
     public function edit($uuid)
     {
         $department = Department::findByUuid($uuid);
-        return view('administrator.department-edit', [
+        return view('departments.edit', [
             'department' => $department
         ]);
     }
@@ -105,7 +105,7 @@ class DepartmentController extends Controller
     public function delete($uuid)
     {
         $department = Department::findByUuid($uuid);
-        return view('administrator.department-delete', [
+        return view('departments.delete', [
             'department' => $department
         ]);
     }

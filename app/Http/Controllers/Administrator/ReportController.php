@@ -18,7 +18,7 @@ class ReportController extends Controller
     public function index()
     {
         $reports = Report::all();
-        return view('administrator.report-index', [
+        return view('reports.index', [
             'reports' => $reports
         ]);
     }
@@ -30,7 +30,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('administrator.report-create');
+        return view('reports.create');
     }
 
     /**

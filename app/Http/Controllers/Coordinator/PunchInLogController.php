@@ -19,7 +19,7 @@ class PunchInLogController extends Controller
     public function index($username)
     {
         $student = User::where('username', $username)->first();
-        return view('coordinator.punch-in-log-index', [
+        return view('punch-in-logs.index', [
             'punchInLogs' => $student->punchInLogs,
             'student' => $student
         ]);
@@ -35,7 +35,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('coordinator.punch-in-log-show', [
+        return view('punch-in-logs.show', [
             'punchInLog' => $punchInLog
         ]);
     }
@@ -50,7 +50,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('coordinator.punch-in-log-edit', [
+        return view('punch-in-logs.edit', [
             'punchInLog' => $punchInLog
         ]);
     }

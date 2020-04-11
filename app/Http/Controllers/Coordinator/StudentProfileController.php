@@ -27,7 +27,7 @@ class StudentProfileController extends Controller
         $workloadData = $workloadDataHandler->getFullWorkloadData();
         $punchInLogs = $student->punchInLogs()->take(5)->get();
 
-        return view('coordinator.student-profile', [
+        return view('students.show', [
             'punchInLogs' => $punchInLogs,
             'student' => $student,
             'workloadData' => $workloadData

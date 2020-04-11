@@ -20,6 +20,6 @@ class DashboardController extends Controller
             ->with('users')
             ->first();
 
-        return view('coordinator.dashboard', compact('department'));
+        return view('departments.show', compact('department'));
     }
 }

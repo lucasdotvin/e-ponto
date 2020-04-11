@@ -47,7 +47,7 @@ class StudentController extends Controller
             ->get();
 
         $departments = Department::orderBy('name')->get();
-        return view('administrator.student-index')
+        return view('students.index')
             ->with([
                 'departments' => $departments,
                 'students' => $students
@@ -66,9 +66,6 @@ class StudentController extends Controller
      */
     public function show($username)
     {
-        $student = User::where('username', $username)
-            ->first();
-
         $student = User::where('username', $username)->first();
         $workloadDataHandler = new \StudentWorkloadData(
             $student,
@@ -78,7 +75,7 @@ class StudentController extends Controller
         $workloadData = $workloadDataHandler->getFullWorkloadData();
         $punchInLogs = $student->punchInLogs()->take(5)->get();
 
-        return view('administrator.student-show', [
+        return view('students.show', [
             'punchInLogs' => $punchInLogs,
             'student' => $student,
             'workloadData' => $workloadData

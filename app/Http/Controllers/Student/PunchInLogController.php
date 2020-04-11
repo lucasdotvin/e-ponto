@@ -21,7 +21,7 @@ class PunchInLogController extends Controller
             ->with('punchInLogs')
             ->first();
 
-        return view('student.punch-in-log-index', compact('student'));
+        return view('punch-in-logs.index', compact('student'));
     }
 
     /**
@@ -31,7 +31,7 @@ class PunchInLogController extends Controller
      */
     public function create()
     {
-        return view('student.punch-in-log-create');
+        return view('punch-in-logs.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('student.punch-in-log-show', [
+        return view('punch-in-logs.show', [
             'punchInLog' => $punchInLog
         ]);
     }
@@ -76,7 +76,7 @@ class PunchInLogController extends Controller
     {
         $punchInLog = PunchInLog::findByUuid($uuid);
 
-        return view('student.punch-in-log-edit', [
+        return view('punch-in-logs.edit', [
             'punchInLog' => $punchInLog
         ]);
     }

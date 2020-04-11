@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
         $workloadData = $workloadDataHandler->getFullWorkloadData();
 
-        return view('student.dashboard', [
+        return view('students.show', [
             'student' => $student,
             'workloadData' => $workloadData
         ]);
