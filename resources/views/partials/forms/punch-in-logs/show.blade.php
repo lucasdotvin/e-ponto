@@ -6,29 +6,20 @@
     </fieldset>
 @endsection
 
-@section('submit-button')
-    @unless ($punchInLog->confirmed_by)
-        @if($userRole === 'coordinator')
-            @php
-                $logConfirmationRouteName = 'coordinator.punch-in-logs.edit';
-                $logConfirmationRoute = route(
-                    $logConfirmationRouteName,
-                    $punchInLog
-                );
-            @endphp
+@unless ($punchInLog->confirmed_by)
+    @php
+        $userRole = auth()->user()->role->slug;
+    @endphp
 
-            <a
-                class="button is-primary"
-                href="{{ $logConfirmationRoute }}"
-            >
-                <span class="icon">
-                    <i class="fas fa-clipboard-check"></i>
-                </span>
+    @section('submit-button')
+        @includeWhen(
+            ($userRole === 'student'),
+            'partials.forms.punch-in-logs._show.student-buttons'
+        )
 
-                <span>
-                    Confirmar
-                </span>
-            </a>
-        @endif
-    @endif
-@endsection
+        @includeWhen(
+            ($userRole === 'coordinator'),
+            'partials.forms.punch-in-logs._show.coordinator-buttons'
+        )
+    @endsection
+@endif
